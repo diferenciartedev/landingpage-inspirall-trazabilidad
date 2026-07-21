@@ -117,18 +117,44 @@
     });
   });
 
-  /* ---- 10. Reveal on scroll ---- */
+  /* ---- 10. Reveal on scroll (+ staggered cascade) — bulletproof ---- */
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var reveals = document.querySelectorAll(".reveal");
+  function markIn(el) {
+    if (el.classList.contains("is-in")) return;
+    if (el.classList.contains("stagger")) {
+      var kids = el.children;
+      for (var i = 0; i < kids.length; i++) kids[i].style.transitionDelay = (i * 80) + "ms";
+    }
+    el.classList.add("is-in");
+  }
+  var animated = Array.prototype.slice.call(document.querySelectorAll(".reveal, .stagger"));
   if (reduce || !("IntersectionObserver" in window)) {
-    reveals.forEach(function (el) { el.classList.add("is-in"); });
+    animated.forEach(markIn);
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
+        if (en.isIntersecting || en.boundingClientRect.top < window.innerHeight) {
+          markIn(en.target); io.unobserve(en.target);
+        }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    animated.forEach(function (el) { io.observe(el); });
+
+    // Fallback sweep: reveal anything at/above the fold on scroll or resize.
+    // Covers very fast flings and deep-link jumps the observer can miss.
+    var pending = animated, ticking = false;
+    function sweep() {
+      ticking = false;
+      pending = pending.filter(function (el) {
+        if (el.classList.contains("is-in")) return false;
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.92) { markIn(el); io.unobserve(el); return false; }
+        return true;
+      });
+    }
+    function onMove() { if (!ticking) { ticking = true; requestAnimationFrame(sweep); } }
+    window.addEventListener("scroll", onMove, { passive: true });
+    window.addEventListener("resize", onMove);
+    onMove(); // initial pass (covers deep-link / anchor loads)
   }
 
   /* ---- 10b. Active timeline node while scrolling ("you are here") ---- */
