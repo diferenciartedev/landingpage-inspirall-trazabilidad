@@ -65,11 +65,20 @@
       </div>
 
       <div class="hero__product reveal">
-        <div class="product-shot" data-photo="Fico Crispy Blend 100 g">
-          <div class="product-shot__badge">100 g</div>
-          <div class="product-shot__label">
-            <span class="product-shot__name">Fico Crispy Blend</span>
-            <span class="product-shot__type">Espirulina peruana premium</span>
+        <!-- Mockup CSS del envase — reemplazar por foto real cuando esté disponible -->
+        <div class="pouch pouch--hero">
+          <span class="pouch__seal" aria-hidden="true"></span>
+          <div class="pouch__body">
+            <span class="pouch__brand">inspirall</span>
+            <span class="pouch__kicker">Trazabilidad blockchain</span>
+            <svg class="pouch__mark" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M24 5a19 19 0 1 0 13.4 32.4" fill="none" stroke="var(--turquoise)" stroke-width="3" stroke-linecap="round"/>
+              <path d="M24 14a10 10 0 1 0 7 17" fill="none" stroke="var(--phyco-lite)" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="2.4" fill="var(--turquoise)"/>
+            </svg>
+            <span class="pouch__name">Fico Crispy Blend</span>
+            <span class="pouch__type">Espirulina peruana premium</span>
+            <span class="pouch__net">Contenido neto · 100 g</span>
           </div>
         </div>
         <p class="hero__note">
@@ -425,10 +434,18 @@
           <div class="stage__split stage__split--rev">
             <div class="stage__media-col">
               <div class="pack">
-                <div class="pack__front" data-photo="Envase · vista frontal">
-                  <span class="pack__brand">inspirall</span>
-                  <span class="pack__product">Fico Crispy Blend</span>
-                  <span class="pack__net">100 g</span>
+                <div class="pouch pouch--sm">
+                  <span class="pouch__seal" aria-hidden="true"></span>
+                  <div class="pouch__body">
+                    <span class="pouch__brand">inspirall</span>
+                    <svg class="pouch__mark" viewBox="0 0 48 48" aria-hidden="true">
+                      <path d="M24 5a19 19 0 1 0 13.4 32.4" fill="none" stroke="var(--turquoise)" stroke-width="3" stroke-linecap="round"/>
+                      <path d="M24 14a10 10 0 1 0 7 17" fill="none" stroke="var(--phyco-lite)" stroke-width="3" stroke-linecap="round"/>
+                      <circle cx="24" cy="24" r="2.4" fill="var(--turquoise)"/>
+                    </svg>
+                    <span class="pouch__name">Fico Crispy Blend</span>
+                    <span class="pouch__net">100 g</span>
+                  </div>
                 </div>
                 <div class="pack__qr">
                   <div class="qr" data-qr-mini aria-label="Código QR del lote"></div>

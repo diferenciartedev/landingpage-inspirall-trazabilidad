@@ -131,6 +131,17 @@
     reveals.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- 10b. Active timeline node while scrolling ("you are here") ---- */
+  if (!reduce && "IntersectionObserver" in window) {
+    var nodeIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var node = en.target.querySelector(".stage__node");
+        if (node) node.classList.toggle("is-current", en.isIntersecting);
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    document.querySelectorAll(".stage").forEach(function (s) { nodeIo.observe(s); });
+  }
+
   /* ---- 11. Count-up for GHI figures ---- */
   function animateCount(el) {
     var end = parseFloat(el.getAttribute("data-count"));
