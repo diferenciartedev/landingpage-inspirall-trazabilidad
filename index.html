@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#082542" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Inspirall · Trazabilidad Fico Crispy Blend 100 g</title>
   <meta name="description" content="Trazabilidad blockchain de Fico Crispy Blend 100 g. Espirulina peruana premium: origen, cultivo, cosecha, proceso Phyco-Active Nano-Blend, distribución y registro digital del lote." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23082542'/%3E%3Cpath d='M16 6a10 10 0 1 0 7 17' fill='none' stroke='%2322c7b8' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M16 11a5 5 0 1 0 3.5 8.5' fill='none' stroke='%23189ad3' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E" />
 </head>
@@ -134,348 +134,362 @@
     </div>
 
     <div class="wrap">
-      <ol class="timeline reveal">
-        <li class="timeline__item"><a href="#etapa-origen"><span class="timeline__num">01</span><span class="timeline__label">Origen</span></a></li>
-        <li class="timeline__item"><a href="#etapa-cultivo"><span class="timeline__num">02</span><span class="timeline__label">Cultivo</span></a></li>
-        <li class="timeline__item"><a href="#etapa-cosecha"><span class="timeline__num">03</span><span class="timeline__label">Cosecha</span></a></li>
-        <li class="timeline__item"><a href="#etapa-nanotech"><span class="timeline__num">04</span><span class="timeline__label">Acopio y Nanotech</span></a></li>
-        <li class="timeline__item"><a href="#etapa-lote"><span class="timeline__num">05</span><span class="timeline__label">Identificación del lote</span></a></li>
-        <li class="timeline__item"><a href="#etapa-identificacion"><span class="timeline__num">06</span><span class="timeline__label">Sellado y rotulado</span></a></li>
-        <li class="timeline__item"><a href="#etapa-distribucion"><span class="timeline__num">07</span><span class="timeline__label">Distribución</span></a></li>
-        <li class="timeline__item"><a href="#blockchain"><span class="timeline__num">08</span><span class="timeline__label">Blockchain</span></a></li>
+      <ol class="stepper reveal">
+        <li class="stepper__item"><a href="#etapa-origen"><span class="stepper__num">01</span><span class="stepper__label">Origen</span></a></li>
+        <li class="stepper__item"><a href="#etapa-cultivo"><span class="stepper__num">02</span><span class="stepper__label">Cultivo</span></a></li>
+        <li class="stepper__item"><a href="#etapa-cosecha"><span class="stepper__num">03</span><span class="stepper__label">Cosecha</span></a></li>
+        <li class="stepper__item"><a href="#etapa-nanotech"><span class="stepper__num">04</span><span class="stepper__label">Acopio y Nanotech</span></a></li>
+        <li class="stepper__item"><a href="#etapa-lote"><span class="stepper__num">05</span><span class="stepper__label">Identificación del lote</span></a></li>
+        <li class="stepper__item"><a href="#etapa-identificacion"><span class="stepper__num">06</span><span class="stepper__label">Sellado y rotulado</span></a></li>
+        <li class="stepper__item"><a href="#etapa-distribucion"><span class="stepper__num">07</span><span class="stepper__label">Distribución</span></a></li>
+        <li class="stepper__item"><a href="#blockchain"><span class="stepper__num">08</span><span class="stepper__label">Blockchain</span></a></li>
       </ol>
     </div>
   </section>
 
-  <!-- ============ SPINE — recorrido de etapas ============ -->
+  <!-- ============ RECORRIDO — etapas sobre un riel continuo ============ -->
   <div class="stages">
-    <span class="stages__spine" aria-hidden="true"></span>
 
-    <!-- 5. ORIGEN -->
+    <!-- 01 · ORIGEN -->
     <section class="stage" id="etapa-origen">
-      <div class="wrap stage__head reveal">
-        <span class="stage__node" aria-hidden="true">01</span>
-        <div>
-          <p class="eyebrow">Origen</p>
-          <h2 class="section__title">Cultivada bajo el sol más exigente del Perú</h2>
-          <p class="lead">
-            La espirulina utilizada en Fico Crispy Blend proviene de centros de cultivo
-            ubicados en distintas regiones del Perú. Cada zona presenta condiciones solares
-            y productivas particulares.
-          </p>
-        </div>
-      </div>
+      <div class="wrap stage__grid reveal">
+        <div class="stage__rail"><span class="stage__node" aria-hidden="true">01</span></div>
+        <div class="stage__content">
+          <header class="stage__intro">
+            <p class="eyebrow">Origen</p>
+            <h2 class="section__title">Cultivada bajo el sol más exigente del Perú</h2>
+            <p class="lead">
+              La espirulina utilizada en Fico Crispy Blend proviene de centros de cultivo
+              ubicados en distintas regiones del Perú. Cada zona presenta condiciones solares
+              y productivas particulares.
+            </p>
+          </header>
 
-      <div class="wrap origin__grid reveal">
-        <!-- Mapa estilizado Perú -->
-        <div class="map" aria-label="Mapa de zonas de cultivo en el Perú">
-          <div class="map__axis"><span>Norte</span><span>Centro</span><span>Sur</span></div>
-          <div class="map__field">
-            <button class="marker" style="left:24%; top:14%" data-zone="piura" aria-label="Piura"><span class="marker__dot"></span><span class="marker__tip">Piura</span></button>
-            <button class="marker" style="left:70%; top:30%" data-zone="pucallpa" aria-label="Pucallpa"><span class="marker__dot"></span><span class="marker__tip">Pucallpa</span></button>
-            <button class="marker" style="left:33%; top:56%" data-zone="quilmana" aria-label="Quilmaná"><span class="marker__dot"></span><span class="marker__tip">Quilmaná</span></button>
-            <button class="marker" style="left:44%; top:82%" data-zone="arequipa" aria-label="Arequipa"><span class="marker__dot"></span><span class="marker__tip">Arequipa</span></button>
-            <button class="marker" style="left:56%; top:90%" data-zone="moquegua" aria-label="Moquegua"><span class="marker__dot"></span><span class="marker__tip">Moquegua</span></button>
-            <span class="map__coast" aria-hidden="true"></span>
-            <span class="map__caption">Perú · de norte a sur</span>
+          <div class="origin__grid">
+            <!-- Mapa estilizado Perú -->
+            <div class="map" aria-label="Mapa de zonas de cultivo en el Perú">
+              <div class="map__axis"><span>Norte</span><span>Centro</span><span>Sur</span></div>
+              <div class="map__field">
+                <button class="marker" style="left:24%; top:14%" data-zone="piura" aria-label="Piura"><span class="marker__dot"></span><span class="marker__tip">Piura</span></button>
+                <button class="marker" style="left:70%; top:30%" data-zone="pucallpa" aria-label="Pucallpa"><span class="marker__dot"></span><span class="marker__tip">Pucallpa</span></button>
+                <button class="marker" style="left:33%; top:56%" data-zone="quilmana" aria-label="Quilmaná"><span class="marker__dot"></span><span class="marker__tip">Quilmaná</span></button>
+                <button class="marker" style="left:44%; top:82%" data-zone="arequipa" aria-label="Arequipa"><span class="marker__dot"></span><span class="marker__tip">Arequipa</span></button>
+                <button class="marker" style="left:56%; top:90%" data-zone="moquegua" aria-label="Moquegua"><span class="marker__dot"></span><span class="marker__tip">Moquegua</span></button>
+                <span class="map__coast" aria-hidden="true"></span>
+                <span class="map__caption">Perú · de norte a sur</span>
+              </div>
+            </div>
+
+            <!-- Tarjetas de zonas -->
+            <div class="zones">
+              <article class="zone" id="zone-moquegua">
+                <header class="zone__head"><h3>Moquegua</h3><span class="zone__place">Torata · Sur del Perú</span></header>
+                <dl class="zone__stats">
+                  <div><dt>GHI</dt><dd><span class="count" data-count="2499.8" data-dec="1">2,499.8</span> kWh/m²</dd></div>
+                  <div><dt>Producción mensual</dt><dd>20 kg</dd></div>
+                  <div><dt>Volumen</dt><dd>17 m³</dd></div>
+                  <div><dt>Captura CO₂ estimada</dt><dd>480 kg / año</dd></div>
+                </dl>
+              </article>
+
+              <article class="zone" id="zone-arequipa">
+                <header class="zone__head"><h3>Arequipa</h3><span class="zone__place">Socabaya · Sur del Perú</span></header>
+                <dl class="zone__stats">
+                  <div><dt>GHI</dt><dd><span class="count" data-count="2468.7" data-dec="1">2,468.7</span> kWh/m²</dd></div>
+                  <div><dt>Producción mensual</dt><dd>36 kg</dd></div>
+                  <div><dt>Volumen</dt><dd>25 m³</dd></div>
+                  <div><dt>Captura CO₂ estimada</dt><dd>624 kg / año</dd></div>
+                </dl>
+              </article>
+
+              <article class="zone" id="zone-piura">
+                <header class="zone__head"><h3>Piura</h3><span class="zone__place">Sullana · Norte del Perú</span></header>
+                <dl class="zone__stats">
+                  <div><dt>GHI</dt><dd><span class="count" data-count="2342.5" data-dec="1">2,342.5</span> kWh/m²</dd></div>
+                  <div><dt>Producción mensual</dt><dd>75 kg</dd></div>
+                  <div><dt>Volumen</dt><dd>65 m³</dd></div>
+                  <div><dt>Captura CO₂ estimada</dt><dd>1,800 kg / año</dd></div>
+                </dl>
+              </article>
+
+              <article class="zone" id="zone-quilmana">
+                <header class="zone__head"><h3>Quilmaná</h3><span class="zone__place">Cañete · Lima</span></header>
+                <dl class="zone__stats">
+                  <div><dt>GHI</dt><dd><span class="count" data-count="1838.4" data-dec="1">1,838.4</span> kWh/m²</dd></div>
+                  <div><dt>Producción mensual</dt><dd>30 kg</dd></div>
+                  <div><dt>Volumen</dt><dd>23 m³</dd></div>
+                  <div><dt>Captura CO₂ estimada</dt><dd>720 kg / año</dd></div>
+                </dl>
+              </article>
+
+              <article class="zone" id="zone-pucallpa">
+                <header class="zone__head"><h3>Pucallpa</h3><span class="zone__place">Ucayali · Selva del Perú</span></header>
+                <dl class="zone__stats">
+                  <div><dt>GHI</dt><dd><span class="count" data-count="1790.4" data-dec="1">1,790.4</span> kWh/m²</dd></div>
+                  <div><dt>Producción mensual</dt><dd>40 kg</dd></div>
+                  <div><dt>Volumen</dt><dd>35 m³</dd></div>
+                  <div><dt>Captura CO₂ estimada</dt><dd>960 kg / año</dd></div>
+                </dl>
+              </article>
+            </div>
           </div>
-        </div>
-
-        <!-- Tarjetas de zonas -->
-        <div class="zones">
-          <article class="zone" id="zone-moquegua">
-            <header class="zone__head"><h3>Moquegua</h3><span class="zone__place">Torata · Sur del Perú</span></header>
-            <dl class="zone__stats">
-              <div><dt>GHI</dt><dd><span class="count" data-count="2499.8" data-dec="1">2,499.8</span> kWh/m²</dd></div>
-              <div><dt>Producción mensual</dt><dd>20 kg</dd></div>
-              <div><dt>Volumen</dt><dd>17 m³</dd></div>
-              <div><dt>Captura CO₂ estimada</dt><dd>480 kg / año</dd></div>
-            </dl>
-          </article>
-
-          <article class="zone" id="zone-arequipa">
-            <header class="zone__head"><h3>Arequipa</h3><span class="zone__place">Socabaya · Sur del Perú</span></header>
-            <dl class="zone__stats">
-              <div><dt>GHI</dt><dd><span class="count" data-count="2468.7" data-dec="1">2,468.7</span> kWh/m²</dd></div>
-              <div><dt>Producción mensual</dt><dd>36 kg</dd></div>
-              <div><dt>Volumen</dt><dd>25 m³</dd></div>
-              <div><dt>Captura CO₂ estimada</dt><dd>624 kg / año</dd></div>
-            </dl>
-          </article>
-
-          <article class="zone" id="zone-piura">
-            <header class="zone__head"><h3>Piura</h3><span class="zone__place">Sullana · Norte del Perú</span></header>
-            <dl class="zone__stats">
-              <div><dt>GHI</dt><dd><span class="count" data-count="2342.5" data-dec="1">2,342.5</span> kWh/m²</dd></div>
-              <div><dt>Producción mensual</dt><dd>75 kg</dd></div>
-              <div><dt>Volumen</dt><dd>65 m³</dd></div>
-              <div><dt>Captura CO₂ estimada</dt><dd>1,800 kg / año</dd></div>
-            </dl>
-          </article>
-
-          <article class="zone" id="zone-quilmana">
-            <header class="zone__head"><h3>Quilmaná</h3><span class="zone__place">Cañete · Lima</span></header>
-            <dl class="zone__stats">
-              <div><dt>GHI</dt><dd><span class="count" data-count="1838.4" data-dec="1">1,838.4</span> kWh/m²</dd></div>
-              <div><dt>Producción mensual</dt><dd>30 kg</dd></div>
-              <div><dt>Volumen</dt><dd>23 m³</dd></div>
-              <div><dt>Captura CO₂ estimada</dt><dd>720 kg / año</dd></div>
-            </dl>
-          </article>
-
-          <article class="zone" id="zone-pucallpa">
-            <header class="zone__head"><h3>Pucallpa</h3><span class="zone__place">Ucayali · Selva del Perú</span></header>
-            <dl class="zone__stats">
-              <div><dt>GHI</dt><dd><span class="count" data-count="1790.4" data-dec="1">1,790.4</span> kWh/m²</dd></div>
-              <div><dt>Producción mensual</dt><dd>40 kg</dd></div>
-              <div><dt>Volumen</dt><dd>35 m³</dd></div>
-              <div><dt>Captura CO₂ estimada</dt><dd>960 kg / año</dd></div>
-            </dl>
-          </article>
+          <p class="note">GHI: Irradiación Horizontal Global recibida por una superficie.</p>
         </div>
       </div>
-      <p class="wrap note reveal">GHI: Irradiación Horizontal Global recibida por una superficie.</p>
     </section>
 
-    <!-- 6. CULTIVO -->
+    <!-- 02 · CULTIVO -->
     <section class="stage" id="etapa-cultivo">
-      <div class="wrap stage__split reveal">
-        <div class="stage__media">
-          <div class="photo-panel" data-photo="Centro de cultivo · nave de espirulina">
-            <span class="photo-panel__hint">Foto real: centro de cultivo / supervisión</span>
+      <div class="wrap stage__grid reveal">
+        <div class="stage__rail"><span class="stage__node" aria-hidden="true">02</span></div>
+        <div class="stage__content">
+          <header class="stage__intro">
+            <p class="eyebrow">Cultivo</p>
+            <h2 class="section__title">Cultivo de espirulina</h2>
+            <p class="lead">
+              La espirulina utilizada en Fico Crispy Blend se cultiva en centros ubicados en
+              distintas regiones del Perú. Cada ciclo debe quedar asociado al lote correspondiente
+              mediante la información de procedencia, inoculación y responsable.
+            </p>
+          </header>
+
+          <div class="stage__split">
+            <div class="photo-panel" data-photo="Centro de cultivo · nave de espirulina">
+              <span class="photo-panel__hint">Foto real: centro de cultivo / supervisión</span>
+            </div>
+            <div class="datablock">
+              <div class="datablock__row">
+                <span class="datablock__key">Procedencia</span>
+                <span class="datablock__val">
+                  <span class="chips">
+                    <span class="chip">Socabaya, Arequipa</span>
+                    <span class="chip">Torata, Moquegua</span>
+                    <span class="chip">Sullana, Piura</span>
+                    <span class="chip">Pucallpa, Ucayali</span>
+                    <span class="chip">Quilmaná, Cañete</span>
+                  </span>
+                </span>
+              </div>
+              <div class="datablock__row"><span class="datablock__key">Inoculación</span><span class="datablock__val">Desde las 6:00 a. m., durante una semana de cada mes.</span></div>
+              <div class="datablock__row"><span class="datablock__key">Tipo de cultivo</span><span class="datablock__val">En agua tratada, 100% reciclada al momento de cosechar.</span></div>
+              <div class="datablock__row"><span class="datablock__key">Responsable</span><span class="datablock__val">Familiar agricultor o miembro de la asociación.</span></div>
+            </div>
           </div>
         </div>
-        <div class="stage__body">
-          <span class="stage__node" aria-hidden="true">02</span>
-          <p class="eyebrow">Cultivo</p>
-          <h2 class="section__title">Cultivo de espirulina</h2>
-          <p class="lead">
-            La espirulina utilizada en Fico Crispy Blend se cultiva en centros ubicados en
-            distintas regiones del Perú. Cada ciclo debe quedar asociado al lote correspondiente
-            mediante la información de procedencia, inoculación y responsable.
-          </p>
+      </div>
+    </section>
 
-          <div class="datablock">
-            <div class="datablock__row">
-              <span class="datablock__key">Procedencia</span>
-              <span class="datablock__val">
-                <span class="chips">
-                  <span class="chip">Socabaya, Arequipa</span>
-                  <span class="chip">Torata, Moquegua</span>
-                  <span class="chip">Sullana, Piura</span>
-                  <span class="chip">Pucallpa, Ucayali</span>
-                  <span class="chip">Quilmaná, Cañete</span>
-                </span>
+    <!-- 03 · COSECHA -->
+    <section class="stage" id="etapa-cosecha">
+      <div class="wrap stage__grid reveal">
+        <div class="stage__rail"><span class="stage__node" aria-hidden="true">03</span></div>
+        <div class="stage__content">
+          <header class="stage__intro">
+            <p class="eyebrow">Cosecha</p>
+            <h2 class="section__title">Cosecha registrada del lote</h2>
+            <p class="lead">
+              La cosecha se realiza al finalizar el ciclo correspondiente y dentro de un horario
+              previamente establecido. La fecha, hora, procedencia y responsable deben quedar
+              vinculados al lote consultado.
+            </p>
+          </header>
+
+          <div class="stage__split stage__split--rev">
+            <div class="photo-panel" data-photo="Cosecha del lote · registro de fecha y hora">
+              <span class="photo-panel__hint">Foto real: cosecha del lote</span>
+            </div>
+            <div class="datablock">
+              <div class="datablock__row"><span class="datablock__key">Horario</span><span class="datablock__val">De 8:00 a. m. a 11:00 a. m.</span></div>
+              <div class="datablock__row"><span class="datablock__key">Frecuencia</span><span class="datablock__val">Cada fin de mes.</span></div>
+              <div class="datablock__row"><span class="datablock__key">Procedencia</span><span class="datablock__val"><b data-sede>Según el lote consultado</b></span></div>
+              <div class="datablock__row"><span class="datablock__key">Responsable</span><span class="datablock__val">Familiar agricultor o miembro de la asociación.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · ACOPIO Y NANOTECH -->
+    <section class="stage stage--feature" id="etapa-nanotech">
+      <div class="wrap stage__grid reveal">
+        <div class="stage__rail"><span class="stage__node" aria-hidden="true">04</span></div>
+        <div class="stage__content">
+          <div class="feature">
+            <header class="stage__intro stage__intro--center">
+              <p class="eyebrow eyebrow--light">Acopio y Nanotech</p>
+              <h2 class="section__title section__title--light">Phyco-Active Nano-Blend</h2>
+              <p class="feature__subtitle">Tecnología enzimática de precisión en frío</p>
+            </header>
+
+            <div class="feature__grid">
+              <div class="feature__text">
+                <p>
+                  Nuestro proceso patentado utiliza tecnología enzimática de precisión en frío para
+                  fraccionar la membrana celular de la espirulina de manera controlada. Esta molienda
+                  en frío, realizada a aproximadamente <b>30 °C</b> y a nivel nanométrico, libera la
+                  <b class="hl-phyco">ficocianina</b>, el característico antioxidante azul de la
+                  espirulina, de forma inmediata y bioactiva.
+                </p>
+                <p>
+                  Una vez liberada, la ficocianina es protegida mediante compuestos naturales
+                  nano-protectores frente a la degradación producida por la luz y el oxígeno,
+                  manteniendo su potencia hasta el consumo.
+                </p>
+              </div>
+
+              <!-- Diagrama del proceso -->
+              <div class="flow" aria-label="Diagrama del proceso Phyco-Active Nano-Blend">
+                <div class="flow__step"><span class="flow__i">01</span>Espirulina</div>
+                <div class="flow__arrow" aria-hidden="true"></div>
+                <div class="flow__step"><span class="flow__i">02</span>Tecnología enzimática de precisión en frío</div>
+                <div class="flow__arrow" aria-hidden="true"></div>
+                <div class="flow__step"><span class="flow__i">03</span>Fraccionamiento controlado de la membrana celular</div>
+                <div class="flow__arrow" aria-hidden="true"></div>
+                <div class="flow__step flow__step--accent"><span class="flow__i">04</span>Liberación de ficocianina</div>
+                <div class="flow__arrow" aria-hidden="true"></div>
+                <div class="flow__step"><span class="flow__i">05</span>Protección frente a luz y oxígeno</div>
+              </div>
+            </div>
+
+            <!-- Beneficios indicados -->
+            <div class="benefits">
+              <article class="benefit">
+                <svg class="benefit__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.2" opacity=".5"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+                <h3>100% espirulina enzimática</h3>
+              </article>
+              <article class="benefit">
+                <svg class="benefit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 5 6 10a6 6 0 1 1-12 0c0-5 6-10 6-10z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="13" r="2.2" fill="currentColor"/></svg>
+                <h3>Bio-liberación de ficocianina</h3>
+              </article>
+              <article class="benefit">
+                <svg class="benefit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.2-2.9 7.5-7 9-4.1-1.5-7-4.8-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4m0 3h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <h3>Blindaje nano contra luz y O₂</h3>
+              </article>
+              <article class="benefit">
+                <svg class="benefit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 20V10m6 10V4m6 16v-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <h3>Alto en proteínas y hierro</h3>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · CONTROL E IDENTIFICACIÓN DEL LOTE -->
+    <section class="stage" id="etapa-lote">
+      <div class="wrap stage__grid reveal">
+        <div class="stage__rail"><span class="stage__node" aria-hidden="true">05</span></div>
+        <div class="stage__content">
+          <header class="stage__intro">
+            <p class="eyebrow">Control y trazabilidad</p>
+            <h2 class="section__title">Información asociada a cada lote</h2>
+            <p class="lead">
+              La trazabilidad permite asociar al lote la información disponible sobre su
+              procedencia, cultivo, cosecha, proceso tecnológico, producto y distribución.
+            </p>
+          </header>
+
+          <div class="lote-grid">
+            <div class="lote-cell"><span>Código del lote</span><b class="mono" data-lote>—</b></div>
+            <div class="lote-cell"><span>Producto</span><b>Fico Crispy Blend</b></div>
+            <div class="lote-cell"><span>Presentación</span><b>100 g</b></div>
+            <div class="lote-cell"><span>Procedencia</span><b data-sede>Según el lote</b></div>
+            <div class="lote-cell"><span>Fecha y hora de inoculación</span><b data-fecha-inoculacion>Registrada en el lote</b></div>
+            <div class="lote-cell"><span>Fecha y hora de cosecha</span><b data-fecha-cosecha>Registrada en el lote</b></div>
+            <div class="lote-cell"><span>Responsable</span><b>Asociación / familiar agricultor</b></div>
+            <div class="lote-cell"><span>Tipo de cultivo</span><b>Agua tratada, 100% reciclada</b></div>
+            <div class="lote-cell"><span>Proceso</span><b>Phyco-Active Nano-Blend</b></div>
+            <div class="lote-cell"><span>Datos de distribución</span><b>Asociados al lote</b></div>
+            <div class="lote-cell lote-cell--wide"><span>Código de transacción blockchain</span><b class="mono" data-hash>Registro blockchain pendiente de integración</b></div>
+          </div>
+          <p class="quote">Cada envase conecta al consumidor con la historia registrada de su lote.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · ENVASADO, SELLADO Y ROTULADO -->
+    <section class="stage" id="etapa-identificacion">
+      <div class="wrap stage__grid reveal">
+        <div class="stage__rail"><span class="stage__node" aria-hidden="true">06</span></div>
+        <div class="stage__content">
+          <header class="stage__intro">
+            <p class="eyebrow">Identificación</p>
+            <h2 class="section__title">Lote sellado y rotulado</h2>
+            <p class="lead">
+              Fico Crispy Blend se presenta en un envase identificado con su código de lote.
+              El código QR dirige al consumidor hacia esta página, donde puede consultar la
+              información disponible del producto.
+            </p>
+          </header>
+
+          <div class="stage__split stage__split--rev">
+            <div class="stage__media-col">
+              <div class="pack">
+                <div class="pack__front" data-photo="Envase · vista frontal">
+                  <span class="pack__brand">inspirall</span>
+                  <span class="pack__product">Fico Crispy Blend</span>
+                  <span class="pack__net">100 g</span>
+                </div>
+                <div class="pack__qr">
+                  <div class="qr" data-qr-mini aria-label="Código QR del lote"></div>
+                  <span class="mono pack__lote">LOTE <b data-lote>—</b></span>
+                </div>
+              </div>
+              <span class="badge-vegan" data-vegan-badge hidden>
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14c6 1 10-3 16-10-1 9-6 15-13 15-2 0-3-1-3-3 0-1 0-1.5.5-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                Vegano
               </span>
             </div>
-            <div class="datablock__row"><span class="datablock__key">Inoculación</span><span class="datablock__val">Desde las 6:00 a. m., durante una semana de cada mes.</span></div>
-            <div class="datablock__row"><span class="datablock__key">Tipo de cultivo</span><span class="datablock__val">En agua tratada, 100% reciclada al momento de cosechar.</span></div>
-            <div class="datablock__row"><span class="datablock__key">Responsable</span><span class="datablock__val">Familiar agricultor o miembro de la asociación.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. COSECHA -->
-    <section class="stage" id="etapa-cosecha">
-      <div class="wrap stage__split stage__split--rev reveal">
-        <div class="stage__body">
-          <span class="stage__node" aria-hidden="true">03</span>
-          <p class="eyebrow">Cosecha</p>
-          <h2 class="section__title">Cosecha registrada del lote</h2>
-          <p class="lead">
-            La cosecha se realiza al finalizar el ciclo correspondiente y dentro de un horario
-            previamente establecido. La fecha, hora, procedencia y responsable deben quedar
-            vinculados al lote consultado.
-          </p>
-
-          <div class="datablock">
-            <div class="datablock__row"><span class="datablock__key">Horario</span><span class="datablock__val">De 8:00 a. m. a 11:00 a. m.</span></div>
-            <div class="datablock__row"><span class="datablock__key">Frecuencia</span><span class="datablock__val">Cada fin de mes.</span></div>
-            <div class="datablock__row"><span class="datablock__key">Procedencia</span><span class="datablock__val"><b data-sede>Según el lote consultado</b></span></div>
-            <div class="datablock__row"><span class="datablock__key">Responsable</span><span class="datablock__val">Familiar agricultor o miembro de la asociación.</span></div>
-          </div>
-        </div>
-        <div class="stage__media">
-          <div class="photo-panel" data-photo="Cosecha del lote · registro de fecha y hora">
-            <span class="photo-panel__hint">Foto real: cosecha del lote</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. ACOPIO Y NANOTECH -->
-    <section class="stage stage--feature" id="etapa-nanotech">
-      <div class="stage--feature__bg" aria-hidden="true"></div>
-      <div class="wrap reveal">
-        <div class="feature__head">
-          <span class="stage__node stage__node--light" aria-hidden="true">04</span>
-          <p class="eyebrow eyebrow--light">Acopio y Nanotech</p>
-          <h2 class="section__title section__title--light">Phyco-Active Nano-Blend</h2>
-          <p class="feature__subtitle">Tecnología enzimática de precisión en frío</p>
-        </div>
-
-        <div class="feature__grid">
-          <div class="feature__text">
-            <p>
-              Nuestro proceso patentado utiliza tecnología enzimática de precisión en frío para
-              fraccionar la membrana celular de la espirulina de manera controlada. Esta molienda
-              en frío, realizada a aproximadamente <b>30 °C</b> y a nivel nanométrico, libera la
-              <b class="hl-phyco">ficocianina</b>, el característico antioxidante azul de la
-              espirulina, de forma inmediata y bioactiva.
-            </p>
-            <p>
-              Una vez liberada, la ficocianina es protegida mediante compuestos naturales
-              nano-protectores frente a la degradación producida por la luz y el oxígeno,
-              manteniendo su potencia hasta el consumo.
-            </p>
-          </div>
-
-          <!-- Diagrama del proceso -->
-          <div class="flow" aria-label="Diagrama del proceso Phyco-Active Nano-Blend">
-            <div class="flow__step"><span class="flow__i">01</span>Espirulina</div>
-            <div class="flow__arrow" aria-hidden="true"></div>
-            <div class="flow__step"><span class="flow__i">02</span>Tecnología enzimática de precisión en frío</div>
-            <div class="flow__arrow" aria-hidden="true"></div>
-            <div class="flow__step"><span class="flow__i">03</span>Fraccionamiento controlado de la membrana celular</div>
-            <div class="flow__arrow" aria-hidden="true"></div>
-            <div class="flow__step flow__step--accent"><span class="flow__i">04</span>Liberación de ficocianina</div>
-            <div class="flow__arrow" aria-hidden="true"></div>
-            <div class="flow__step"><span class="flow__i">05</span>Protección frente a luz y oxígeno</div>
-          </div>
-        </div>
-
-        <!-- Beneficios indicados -->
-        <div class="benefits">
-          <article class="benefit">
-            <svg class="benefit__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.2" opacity=".5"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
-            <h3>100% espirulina enzimática</h3>
-          </article>
-          <article class="benefit">
-            <svg class="benefit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 5 6 10a6 6 0 1 1-12 0c0-5 6-10 6-10z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="13" r="2.2" fill="currentColor"/></svg>
-            <h3>Bio-liberación de ficocianina</h3>
-          </article>
-          <article class="benefit">
-            <svg class="benefit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.2-2.9 7.5-7 9-4.1-1.5-7-4.8-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4m0 3h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            <h3>Blindaje nano contra luz y O₂</h3>
-          </article>
-          <article class="benefit">
-            <svg class="benefit__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 20V10m6 10V4m6 16v-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            <h3>Alto en proteínas y hierro</h3>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. CONTROL E IDENTIFICACIÓN DEL LOTE -->
-    <section class="stage" id="etapa-lote">
-      <div class="wrap stage__head reveal">
-        <span class="stage__node" aria-hidden="true">05</span>
-        <div>
-          <p class="eyebrow">Control y trazabilidad</p>
-          <h2 class="section__title">Información asociada a cada lote</h2>
-          <p class="lead">
-            La trazabilidad permite asociar al lote la información disponible sobre su
-            procedencia, cultivo, cosecha, proceso tecnológico, producto y distribución.
-          </p>
-        </div>
-      </div>
-
-      <div class="wrap reveal">
-        <div class="lote-grid">
-          <div class="lote-cell"><span>Código del lote</span><b class="mono" data-lote>—</b></div>
-          <div class="lote-cell"><span>Producto</span><b>Fico Crispy Blend</b></div>
-          <div class="lote-cell"><span>Presentación</span><b>100 g</b></div>
-          <div class="lote-cell"><span>Procedencia</span><b data-sede>Según el lote</b></div>
-          <div class="lote-cell"><span>Fecha y hora de inoculación</span><b data-fecha-inoculacion>Registrada en el lote</b></div>
-          <div class="lote-cell"><span>Fecha y hora de cosecha</span><b data-fecha-cosecha>Registrada en el lote</b></div>
-          <div class="lote-cell"><span>Responsable</span><b>Asociación / familiar agricultor</b></div>
-          <div class="lote-cell"><span>Tipo de cultivo</span><b>Agua tratada, 100% reciclada</b></div>
-          <div class="lote-cell"><span>Proceso</span><b>Phyco-Active Nano-Blend</b></div>
-          <div class="lote-cell"><span>Datos de distribución</span><b>Asociados al lote</b></div>
-          <div class="lote-cell lote-cell--wide"><span>Código de transacción blockchain</span><b class="mono" data-hash>Registro blockchain pendiente de integración</b></div>
-        </div>
-        <p class="quote reveal">Cada envase conecta al consumidor con la historia registrada de su lote.</p>
-      </div>
-    </section>
-
-    <!-- 10. ENVASADO, SELLADO Y ROTULADO -->
-    <section class="stage" id="etapa-identificacion">
-      <div class="wrap stage__split stage__split--rev reveal">
-        <div class="stage__body">
-          <span class="stage__node" aria-hidden="true">06</span>
-          <p class="eyebrow">Identificación</p>
-          <h2 class="section__title">Lote sellado y rotulado</h2>
-          <p class="lead">
-            Fico Crispy Blend se presenta en un envase identificado con su código de lote.
-            El código QR dirige al consumidor hacia esta página, donde puede consultar la
-            información disponible del producto.
-          </p>
-
-          <div class="datablock">
-            <div class="datablock__row"><span class="datablock__key">Producto</span><span class="datablock__val">Fico Crispy Blend</span></div>
-            <div class="datablock__row"><span class="datablock__key">Presentación</span><span class="datablock__val">100 g</span></div>
-            <div class="datablock__row"><span class="datablock__key">Marca</span><span class="datablock__val">Inspirall</span></div>
-            <div class="datablock__row"><span class="datablock__key">Lote</span><span class="datablock__val mono" data-lote>—</span></div>
-            <div class="datablock__row"><span class="datablock__key">País de origen</span><span class="datablock__val">Perú</span></div>
-            <div class="datablock__row"><span class="datablock__key">Registro sanitario</span><span class="datablock__val mono" data-registro>M5801426N / NAUTSS</span></div>
-            <div class="datablock__row"><span class="datablock__key">Código QR</span><span class="datablock__val mono" data-lote-url>URL del lote</span></div>
-          </div>
-        </div>
-        <div class="stage__media">
-          <div class="pack">
-            <div class="pack__front" data-photo="Envase · vista frontal">
-              <span class="pack__brand">inspirall</span>
-              <span class="pack__product">Fico Crispy Blend</span>
-              <span class="pack__net">100 g</span>
-            </div>
-            <div class="pack__qr">
-              <div class="qr" data-qr-mini aria-label="Código QR del lote"></div>
-              <span class="mono pack__lote">LOTE <b data-lote>—</b></span>
+            <div class="datablock">
+              <div class="datablock__row"><span class="datablock__key">Producto</span><span class="datablock__val">Fico Crispy Blend</span></div>
+              <div class="datablock__row"><span class="datablock__key">Presentación</span><span class="datablock__val">100 g</span></div>
+              <div class="datablock__row"><span class="datablock__key">Marca</span><span class="datablock__val">Inspirall</span></div>
+              <div class="datablock__row"><span class="datablock__key">Lote</span><span class="datablock__val mono" data-lote>—</span></div>
+              <div class="datablock__row"><span class="datablock__key">País de origen</span><span class="datablock__val">Perú</span></div>
+              <div class="datablock__row"><span class="datablock__key">Registro sanitario</span><span class="datablock__val mono" data-registro>M5801426N / NAUTSS</span></div>
+              <div class="datablock__row"><span class="datablock__key">Código QR</span><span class="datablock__val mono" data-lote-url>URL del lote</span></div>
             </div>
           </div>
-          <span class="badge-vegan" data-vegan-badge hidden>
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14c6 1 10-3 16-10-1 9-6 15-13 15-2 0-3-1-3-3 0-1 0-1.5.5-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-            Vegano
-          </span>
+          <p class="note">La indicación vegana se muestra únicamente cuando se cuenta con el respaldo correspondiente.</p>
         </div>
       </div>
-      <p class="wrap note reveal">La indicación vegana se muestra únicamente cuando se cuenta con el respaldo correspondiente.</p>
     </section>
 
-    <!-- 11. DISTRIBUCIÓN -->
+    <!-- 07 · DISTRIBUCIÓN -->
     <section class="stage" id="etapa-distribucion">
-      <div class="wrap stage__head reveal">
-        <span class="stage__node" aria-hidden="true">07</span>
-        <div>
-          <p class="eyebrow">Distribución</p>
-          <h2 class="section__title">Del producto hasta tu destino</h2>
-          <p class="lead">
-            Nuestro compromiso con la calidad se extiende a la entrega. Utilizamos métodos
-            seguros y rastreables para procurar que Fico Crispy llegue en buenas condiciones
-            a cada destino.
-          </p>
+      <div class="wrap stage__grid reveal">
+        <div class="stage__rail stage__rail--last"><span class="stage__node" aria-hidden="true">07</span></div>
+        <div class="stage__content">
+          <header class="stage__intro">
+            <p class="eyebrow">Distribución</p>
+            <h2 class="section__title">Del producto hasta tu destino</h2>
+            <p class="lead">
+              Nuestro compromiso con la calidad se extiende a la entrega. Utilizamos métodos
+              seguros y rastreables para procurar que Fico Crispy llegue en buenas condiciones
+              a cada destino.
+            </p>
+          </header>
+
+          <div class="dist__grid">
+            <article class="dist-card">
+              <div class="dist-card__top">
+                <svg class="dist-card__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16V7h10v9M14 10h4l2 3v3h-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                <div><h3>Lima Metropolitana</h3><span class="dist-card__method">Entrega motorizada</span></div>
+              </div>
+              <p>Las entregas locales se realizan mediante un delivery motorizado de confianza en distritos seleccionados de Lima Metropolitana.</p>
+              <div class="dist-card__eta"><span>Tiempo estimado</span><b>24 a 48 horas</b></div>
+            </article>
+
+            <article class="dist-card">
+              <div class="dist-card__top">
+                <svg class="dist-card__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.7" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="1.7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                <div><h3>Provincias</h3><span class="dist-card__method">Operadores logísticos nacionales</span></div>
+              </div>
+              <p>Para los envíos a provincias se trabaja con operadores logísticos como Olva o Shalom.</p>
+              <div class="dist-card__eta"><span>Tiempo estimado</span><b>3 a 5 días</b></div>
+            </article>
+          </div>
         </div>
-      </div>
-
-      <div class="wrap dist__grid reveal">
-        <article class="dist-card">
-          <div class="dist-card__top">
-            <svg class="dist-card__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16V7h10v9M14 10h4l2 3v3h-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-            <div><h3>Lima Metropolitana</h3><span class="dist-card__method">Entrega motorizada</span></div>
-          </div>
-          <p>Las entregas locales se realizan mediante un delivery motorizado de confianza en distritos seleccionados de Lima Metropolitana.</p>
-          <div class="dist-card__eta"><span>Tiempo estimado</span><b>24 a 48 horas</b></div>
-        </article>
-
-        <article class="dist-card">
-          <div class="dist-card__top">
-            <svg class="dist-card__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.7" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="1.7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-            <div><h3>Provincias</h3><span class="dist-card__method">Operadores logísticos nacionales</span></div>
-          </div>
-          <p>Para los envíos a provincias se trabaja con operadores logísticos como Olva o Shalom.</p>
-          <div class="dist-card__eta"><span>Tiempo estimado</span><b>3 a 5 días</b></div>
-        </article>
       </div>
     </section>
   </div><!-- /stages -->
