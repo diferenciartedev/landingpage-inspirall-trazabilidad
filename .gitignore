@@ -1,0 +1,4 @@
+node_modules/
+scratch-*.png
+shot.*js
+.DS_Store
