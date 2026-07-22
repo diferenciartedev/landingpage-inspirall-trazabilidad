@@ -9,14 +9,15 @@ function izu( $k ) { $o = $GLOBALS['inspitz_o']; return esc_url( isset( $o[$k] )
 function iznl( $k ){ $o = $GLOBALS['inspitz_o']; return nl2br( esc_html( isset( $o[$k] ) ? $o[$k] : '' ) ); }
 function izraw( $k ){ $o = $GLOBALS['inspitz_o']; return isset( $o[$k] ) ? $o[$k] : ''; }
 
-/** figure.shot with real photo (if set) + fallback markup. */
-function iz_shot( $url, $wrapClass, $alt, $fallback ) {
+/** figure.shot with real photo (if set) + fallback markup. $style = inline CSS vars. */
+function iz_shot( $url, $wrapClass, $alt, $fallback, $style = '' ) {
 	$img = '';
 	if ( $url ) {
 		$img = '<img class="shot__img" src="' . esc_url( $url ) . '" alt="' . esc_attr( $alt ) . '" '
 			. 'onload="this.closest(\'.shot\').classList.add(\'shot--hasimg\')" onerror="this.remove()" />';
 	}
-	return '<figure class="shot ' . esc_attr( $wrapClass ) . '">' . $img . $fallback . '</figure>';
+	$st = $style ? ' style="' . esc_attr( $style ) . '"' : '';
+	return '<figure class="shot ' . esc_attr( $wrapClass ) . '"' . $st . '>' . $img . $fallback . '</figure>';
 }
 
 /** CAN (pomo) mockup markup. $variant: 'hero' | 'sm'. */
@@ -66,6 +67,12 @@ function iz_brand( $light = false ) {
 function inspitz_render() {
 	$o = inspitz_get();
 	$GLOBALS['inspitz_o'] = $o;
+
+	// Image sizing (from the "Imágenes" tab)
+	$hero_style  = '--shot-w:' . max( 120, intval( $o['img_hero_w'] ) ) . 'px';
+	$prod_style  = '--shot-w:' . max( 120, intval( $o['img_prod_w'] ) ) . 'px;--shot-ar:' . ( $o['img_prod_ar'] ? $o['img_prod_ar'] : '3 / 4' );
+	$stage_style = '--shot-ar:' . ( $o['img_stage_ar'] ? $o['img_stage_ar'] : '4 / 3' );
+	$env_style   = '--shot-w:' . max( 100, intval( $o['img_envase_w'] ) ) . 'px';
 
 	$check_ico = '<svg class="ico ico--check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4 10-10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 	$zone_pos = array(
@@ -117,7 +124,7 @@ function inspitz_render() {
 					<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 			</div>
 			<div class="hero__product reveal">
-				<?php echo iz_shot( izraw( 'hero_image' ), 'shot--hero', 'Lata de Fico Crispy Blend 100 g', iz_can( 'hero' ) ); ?>
+				<?php echo iz_shot( izraw( 'hero_image' ), 'shot--hero', 'Lata de Fico Crispy Blend 100 g', iz_can( 'hero' ), $hero_style ); ?>
 				<p class="hero__note"><?php echo iz( 'hero_note' ); ?></p>
 			</div>
 		</div>
@@ -128,7 +135,7 @@ function inspitz_render() {
 	<section class="section product" id="producto">
 		<div class="wrap product__grid">
 			<div class="product__media reveal">
-				<?php echo iz_shot( izraw( 'prod_image' ), '', 'Fico Crispy Blend 100 g', '<div class="photo-panel photo-panel--tall" data-photo="Fico Crispy Blend"><div class="photo-panel__ficonode" aria-hidden="true"></div></div>' ); ?>
+				<?php echo iz_shot( izraw( 'prod_image' ), 'shot--photo', 'Fico Crispy Blend 100 g', '<div class="photo-panel photo-panel--tall" data-photo="Fico Crispy Blend"><div class="photo-panel__ficonode" aria-hidden="true"></div></div>', $prod_style ); ?>
 			</div>
 			<div class="product__info reveal">
 				<p class="eyebrow"><?php echo iz( 'prod_eyebrow' ); ?></p>
@@ -212,7 +219,7 @@ function inspitz_render() {
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cultivo_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cultivo_title'); ?></h2><p class="lead"><?php echo iz('cultivo_desc'); ?></p></header>
 					<div class="stage__split">
-						<?php echo iz_shot( izraw('cultivo_image'), '', 'Centro de cultivo de espirulina', '<div class="photo-panel" data-photo="Centro de cultivo · nave de espirulina"><span class="photo-panel__hint">Foto real: centro de cultivo / supervisión</span></div>' ); ?>
+						<?php echo iz_shot( izraw('cultivo_image'), 'shot--photo', 'Centro de cultivo de espirulina', '<div class="photo-panel" data-photo="Centro de cultivo · nave de espirulina"><span class="photo-panel__hint">Foto real: centro de cultivo / supervisión</span></div>', $stage_style ); ?>
 						<div class="datablock">
 							<div class="datablock__row"><span class="datablock__key">Procedencia</span><span class="datablock__val"><span class="chips">
 								<?php foreach ( array_filter( array_map('trim', explode("\n", izraw('cultivo_procedencia') ) ) ) as $ch ) echo '<span class="chip">' . esc_html($ch) . '</span>'; ?>
@@ -233,7 +240,7 @@ function inspitz_render() {
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cosecha_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cosecha_title'); ?></h2><p class="lead"><?php echo iz('cosecha_desc'); ?></p></header>
 					<div class="stage__split stage__split--rev">
-						<?php echo iz_shot( izraw('cosecha_image'), '', 'Cosecha del lote', '<div class="photo-panel" data-photo="Cosecha del lote · registro de fecha y hora"><span class="photo-panel__hint">Foto real: cosecha del lote</span></div>' ); ?>
+						<?php echo iz_shot( izraw('cosecha_image'), 'shot--photo', 'Cosecha del lote', '<div class="photo-panel" data-photo="Cosecha del lote · registro de fecha y hora"><span class="photo-panel__hint">Foto real: cosecha del lote</span></div>', $stage_style ); ?>
 						<div class="datablock">
 							<div class="datablock__row"><span class="datablock__key">Horario</span><span class="datablock__val"><?php echo iz('cosecha_horario'); ?></span></div>
 							<div class="datablock__row"><span class="datablock__key">Frecuencia</span><span class="datablock__val"><?php echo iz('cosecha_frecuencia'); ?></span></div>
@@ -302,7 +309,7 @@ function inspitz_render() {
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('ident_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('ident_title'); ?></h2><p class="lead"><?php echo iz('ident_desc'); ?></p></header>
 					<div class="stage__split stage__split--rev">
 						<div class="stage__media-col">
-							<?php echo iz_shot( izraw('ident_image'), 'shot--pack', 'Envase Fico Crispy Blend', iz_can('sm') ); ?>
+							<?php echo iz_shot( izraw('ident_image'), 'shot--pack', 'Envase Fico Crispy Blend', iz_can('sm'), $env_style ); ?>
 							<div class="pack__qr" style="margin-top:1rem"><div class="qr" data-qr-mini aria-label="Código QR del lote"></div><span class="mono pack__lote">LOTE <b data-lote><?php echo iz('lote_default'); ?></b></span></div>
 							<span class="badge-vegan" data-vegan-badge hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14c6 1 10-3 16-10-1 9-6 15-13 15-2 0-3-1-3-3 0-1 0-1.5.5-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Vegano</span>
 						</div>

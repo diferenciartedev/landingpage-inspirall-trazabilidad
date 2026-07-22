@@ -21,6 +21,14 @@ function inspitz_schema() {
 			'lote_default' => array( 'type' => 'text',     'label' => 'Código de lote por defecto', 'default' => 'FCB-2025-0001', 'help' => 'Se sobreescribe con ?lote= en la URL del QR.' ),
 		) ),
 
+		'imagenes' => array( 'label' => 'Imágenes (tamaños)', 'fields' => array(
+			'img_hero_w'   => array( 'type' => 'text', 'label' => 'Ancho de la foto del hero (px)', 'default' => '360', 'help' => 'El pomo / lata en la portada. Ej.: 360' ),
+			'img_prod_w'   => array( 'type' => 'text', 'label' => 'Ancho de la foto de producto (px)', 'default' => '460', 'help' => 'Sección «Fico Crispy Blend».' ),
+			'img_prod_ar'  => array( 'type' => 'text', 'label' => 'Proporción foto de producto', 'default' => '3 / 4', 'help' => 'ancho / alto. Ej.: 3 / 4 (vertical), 4 / 3 (horizontal), 1 / 1 (cuadrada).' ),
+			'img_stage_ar' => array( 'type' => 'text', 'label' => 'Proporción fotos de proceso (cultivo y cosecha)', 'default' => '4 / 3', 'help' => 'Se recortan de forma pareja a esta proporción.' ),
+			'img_envase_w' => array( 'type' => 'text', 'label' => 'Ancho de la foto del envase (px)', 'default' => '210', 'help' => 'Sección «Lote sellado y rotulado».' ),
+		) ),
+
 		'hero' => array( 'label' => 'Portada (Hero)', 'fields' => array(
 			'hero_eyebrow' => array( 'type' => 'text',     'label' => 'Etiqueta superior', 'default' => 'Tu nutrición tiene origen' ),
 			'hero_title'   => array( 'type' => 'textarea', 'label' => 'Título principal', 'default' => "Cultivado donde\npocos llegan", 'help' => 'Usa Enter para el salto de línea.' ),
