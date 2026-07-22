@@ -194,25 +194,34 @@ p { margin: 0; }
 .hero__note { font-size: .92rem; color: rgba(255,255,255,.72); line-height: 1.6; }
 
 /* Product pouch mockup (swap for a real photo) */
-.pouch { position: relative; width: 100%; max-width: 330px; margin-inline: auto; aspect-ratio: 25/32; filter: drop-shadow(0 34px 46px rgba(6,20,36,.42)); }
-.pouch__seal { position: absolute; top: 0; left: 9%; right: 9%; height: 6.5%; border-radius: 12px 12px 4px 4px; background-color: #0a2c47; background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 3px, rgba(0,0,0,.08) 3px 7px), linear-gradient(180deg,#12466a,#0a2c47); border: 1px solid rgba(255,255,255,.12); }
-.pouch__body { position: absolute; top: 5%; left: 0; right: 0; bottom: 0; overflow: hidden; color: #fff; text-align: center; padding: 13% 11% 9%; display: flex; flex-direction: column; align-items: center; gap: .35rem; border: 1px solid rgba(255,255,255,.14); border-radius: 20px 20px 34px 34px / 16px 16px 46px 46px; background: linear-gradient(158deg, #12466a 0%, #082944 52%, #0c6b63 122%); }
-.pouch__body::before { content: ""; position: absolute; inset: 0; background: linear-gradient(104deg, rgba(255,255,255,.18), transparent 46%); pointer-events: none; }
-.pouch__body::after { content: ""; position: absolute; inset: 0; background: radial-gradient(58% 42% at 50% 60%, rgba(34,199,184,.4), transparent 62%); pointer-events: none; }
+/* Product CAN (pomo) mockup — reuses .pouch__* markup; swap for a real photo. */
+.pouch { position: relative; width: 100%; max-width: 300px; margin-inline: auto; aspect-ratio: 41/52; filter: drop-shadow(0 30px 42px rgba(6,18,34,.5)); }
+/* black lid (top ellipse) */
+.pouch__seal { position: absolute; top: 0; left: 2.5%; right: 2.5%; height: 12%; z-index: 3; border: none; border-radius: 50% / 100%; background: radial-gradient(ellipse at 50% 35%, #34353d 0%, #15151b 55%, #060609 100%); box-shadow: inset 0 -5px 9px rgba(255,255,255,.14), inset 0 4px 7px rgba(0,0,0,.6); }
+/* cylinder body with curvature shading */
+.pouch__body { position: absolute; top: 6%; left: 0; right: 0; bottom: 3%; overflow: hidden; color: #fff; text-align: center; padding: 16% 13% 9%; display: flex; flex-direction: column; align-items: center; gap: .18rem;
+  border-radius: 48% 48% 7% 7% / 10% 10% 3% 3%;
+  background:
+    linear-gradient(90deg, rgba(2,7,18,.55) 0%, rgba(2,7,18,0) 13%, rgba(255,255,255,.12) 30%, rgba(255,255,255,0) 48%, rgba(2,7,18,0) 84%, rgba(2,7,18,.6) 100%),
+    linear-gradient(176deg, #17497e 0%, #0e2c55 44%, #241a55 100%); }
+/* metal base ellipse */
+.pouch::after { content: ""; position: absolute; bottom: 0; left: 4%; right: 4%; height: 7%; z-index: 2; border-radius: 50% / 100%; background: radial-gradient(ellipse at 50% 75%, #16344f 0%, #08080d 78%); }
+.pouch__body::before { content: ""; position: absolute; inset: 0; background: radial-gradient(130% 70% at 50% -12%, rgba(255,255,255,.16), transparent 42%); pointer-events: none; }
+.pouch__body::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 45%; background: linear-gradient(180deg, transparent, rgba(34,120,140,.22)); pointer-events: none; }
 .pouch__body > * { position: relative; z-index: 1; }
-.pouch__brand { font-family: var(--display); font-weight: 800; letter-spacing: -.03em; font-size: clamp(1rem, 3.6vw, 1.35rem); }
-.pouch__kicker { font-family: var(--mono); font-size: .5rem; letter-spacing: .14em; text-transform: uppercase; color: var(--turquoise); max-width: 80%; }
-.pouch__mark { width: 32%; height: auto; margin: 5% 0 3%; filter: drop-shadow(0 0 12px rgba(34,199,184,.5)); }
-.pouch__name { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; font-size: clamp(1.25rem, 4.6vw, 1.8rem); line-height: 1; }
-.pouch__band { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: clamp(.78rem, 2.6vw, 1.02rem); color: #052826; background: var(--turquoise); padding: .18em .75em; border-radius: 7px; margin-top: .35rem; box-shadow: 0 6px 16px -8px rgba(34,199,184,.8); }
+.pouch__brand { font-family: var(--display); font-weight: 800; letter-spacing: -.03em; font-size: clamp(1rem, 3.5vw, 1.3rem); }
+.pouch__by { font-family: var(--body); font-weight: 500; font-size: .5rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-top: -.15rem; }
+.pouch__kicker { font-family: var(--mono); font-size: .46rem; letter-spacing: .1em; text-transform: uppercase; color: var(--turquoise); max-width: 88%; margin-top: .25rem; }
+.pouch__mark { width: 24%; height: auto; margin: 4% 0 2%; filter: drop-shadow(0 0 12px rgba(34,199,184,.55)); }
+.pouch__name { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; font-size: clamp(1.35rem, 5.2vw, 2.05rem); line-height: .95; text-transform: uppercase; }
+.pouch__band { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: clamp(.8rem, 2.6vw, 1.05rem); color: #04302e; background: var(--turquoise); padding: .16em .9em; border-radius: 6px; margin-top: .45rem; box-shadow: 0 6px 16px -8px rgba(34,199,184,.8); }
 .pouch__type { font-size: .72rem; color: var(--turquoise); }
-.pouch__net { margin-top: auto; width: 100%; padding-top: 6%; border-top: 1px solid rgba(255,255,255,.16); font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; color: rgba(255,255,255,.82); }
-.pouch--hero { max-width: 342px; animation: pouchfloat 6s ease-in-out infinite; }
-@keyframes pouchfloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.pouch--sm { max-width: 210px; }
-.pouch--sm .pouch__mark { width: 30%; margin: 3% 0; }
-.pouch--sm .pouch__net { font-size: .56rem; }
-.pouch__by { font-family: var(--body); font-weight: 500; font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.72); margin-top: -.2rem; }
+.pouch__net { margin-top: auto; width: 100%; padding-top: 7%; font-family: var(--mono); font-weight: 700; font-size: .56rem; letter-spacing: .05em; text-transform: uppercase; color: rgba(255,255,255,.9); }
+.pouch--hero { max-width: 300px; animation: pouchfloat 6s ease-in-out infinite; }
+@keyframes pouchfloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+.pouch--sm { max-width: 198px; }
+.pouch--sm .pouch__mark { width: 22%; margin: 3% 0; }
+.pouch--sm .pouch__net { font-size: .5rem; }
 
 /* Real-photo slot — shows the photo when the asset exists, mockup otherwise */
 .shot { position: relative; width: 100%; }
