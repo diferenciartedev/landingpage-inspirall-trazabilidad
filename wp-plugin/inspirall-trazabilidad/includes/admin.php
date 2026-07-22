@@ -30,7 +30,6 @@ function inspitz_sanitize( $input ) {
 					foreach ( array_keys( $f['sub'] ) as $sk ) {
 						$r[ $sk ] = sanitize_text_field( isset( $row[ $sk ] ) ? $row[ $sk ] : '' );
 					}
-					// keep row only if at least one field non-empty
 					if ( strlen( implode( '', $r ) ) ) $clean[] = $r;
 				}
 				$out[ $key ] = $clean;
@@ -46,31 +45,38 @@ function inspitz_sanitize( $input ) {
 	return $out;
 }
 
+/** Load the WP media library on our page (for the image pickers). */
 add_action( 'admin_enqueue_scripts', function ( $hook ) {
-	if ( $hook !== 'toplevel_page_inspirall-traz' ) return;
-	wp_enqueue_media();
-	wp_enqueue_style( 'inspitz-admin', false );
-	wp_add_inline_style( 'inspitz-admin', inspitz_admin_css() );
+	if ( $hook === 'toplevel_page_inspirall-traz' ) wp_enqueue_media();
 } );
 
+/** Admin CSS printed inline so it always loads. */
 function inspitz_admin_css() {
 	return '
-	.inspitz-tabs{display:flex;flex-wrap:wrap;gap:4px;margin:16px 0}
-	.inspitz-tab{padding:8px 14px;background:#fff;border:1px solid #dcdcde;border-radius:6px;cursor:pointer;font-weight:600}
+	.inspitz-wrap{max-width:1000px}
+	.inspitz-intro{background:#fff;border:1px solid #dcdcde;border-left:4px solid #0e8f83;border-radius:6px;padding:12px 16px;margin:12px 0 0;font-size:13px;line-height:1.6}
+	.inspitz-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 0;border-bottom:1px solid #dcdcde;padding-bottom:0}
+	.inspitz-tab{padding:9px 15px;background:#f0f0f1;border:1px solid #dcdcde;border-bottom:none;border-radius:7px 7px 0 0;cursor:pointer;font-weight:600;font-size:13px;color:#1d2327;line-height:1.2}
+	.inspitz-tab:hover{background:#fff}
 	.inspitz-tab.active{background:#0e8f83;border-color:#0e8f83;color:#fff}
-	.inspitz-panel{display:none;background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:18px 22px;max-width:900px}
+	.inspitz-panel{display:none;background:#fff;border:1px solid #dcdcde;border-radius:0 8px 8px 8px;padding:22px 26px;margin-top:-1px}
 	.inspitz-panel.active{display:block}
-	.inspitz-field{margin:0 0 20px}
-	.inspitz-field>label{display:block;font-weight:600;margin-bottom:6px}
-	.inspitz-field input[type=text],.inspitz-field input[type=url],.inspitz-field textarea{width:100%;max-width:640px}
-	.inspitz-field textarea{min-height:80px}
-	.inspitz-help{color:#666;font-size:12px;margin-top:4px}
+	.inspitz-field{margin:0 0 20px;padding:0 0 20px;border-bottom:1px solid #f0f0f1}
+	.inspitz-field:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+	.inspitz-field>label{display:block;font-weight:600;font-size:13px;margin:0 0 7px;color:#1d2327}
+	.inspitz-field input[type=text],.inspitz-field input[type=url],.inspitz-field textarea{width:100%;max-width:100%;padding:8px 11px;border:1px solid #8c8f94;border-radius:5px;box-sizing:border-box;font-size:14px}
+	.inspitz-field textarea{min-height:88px;line-height:1.5}
+	.inspitz-help{color:#646970;font-size:12px;margin-top:6px}
 	.inspitz-img{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-	.inspitz-img img{max-height:70px;border:1px solid #dcdcde;border-radius:6px;background:#f0f0f1}
-	.inspitz-rep-row{border:1px solid #e0e0e0;border-radius:8px;padding:12px 14px;margin-bottom:10px;background:#fafafa;position:relative}
-	.inspitz-rep-row .inspitz-sub{margin-bottom:8px}
-	.inspitz-rep-row .inspitz-sub label{display:block;font-size:12px;color:#555;margin-bottom:3px}
-	.inspitz-rm{position:absolute;top:8px;right:8px}
+	.inspitz-img img{width:72px;height:72px;object-fit:cover;border:1px solid #dcdcde;border-radius:8px;background:#f6f7f7}
+	.inspitz-img input{flex:1 1 240px;min-width:200px}
+	.inspitz-rep-rows{display:grid;gap:12px;margin-bottom:10px}
+	.inspitz-rep-row{border:1px solid #e2e4e7;border-radius:10px;padding:14px 16px;background:#fbfbfc;position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+	.inspitz-sub{margin:0}
+	.inspitz-sub label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.03em;color:#646970;margin:0 0 4px}
+	.inspitz-sub input{width:100%;padding:7px 10px;border:1px solid #8c8f94;border-radius:5px;box-sizing:border-box;font-size:13px}
+	.inspitz-rm{position:absolute;top:-11px;right:-11px;width:26px;height:26px;padding:0;border-radius:50%;border:1px solid #dcdcde;background:#fff;cursor:pointer;line-height:22px;font-size:17px;color:#d63638;text-align:center}
+	.inspitz-rm:hover{background:#d63638;color:#fff;border-color:#d63638}
 	';
 }
 
@@ -78,18 +84,20 @@ function inspitz_render_admin_page() {
 	if ( ! current_user_can( 'manage_options' ) ) return;
 	$schema = inspitz_schema();
 	$o = inspitz_get();
-	$first = true;
 	?>
-	<div class="wrap">
+	<style><?php echo inspitz_admin_css(); ?></style>
+	<div class="wrap inspitz-wrap">
 		<h1>Trazabilidad Inspirall</h1>
-		<p>Edita el contenido de la página de trazabilidad. Publícala con el shortcode
-		<code>[inspirall_trazabilidad]</code> en cualquier página, o usa la página
-		<strong>«Trazabilidad Fico Crispy»</strong> creada automáticamente.
-		El código de lote se puede cambiar por QR con <code>?lote=CODIGO</code> en la URL.</p>
+		<div class="inspitz-intro">
+			Edita el contenido y pulsa <strong>Guardar cambios</strong>. Publícala con el shortcode
+			<code>[inspirall_trazabilidad]</code> o, mejor, asigna a la página la plantilla
+			<strong>«Trazabilidad Inspirall (pantalla completa)»</strong>. El código de lote se puede
+			cambiar por QR con <code>?lote=CODIGO</code> en la URL.
+		</div>
 
 		<div class="inspitz-tabs">
-			<?php foreach ( $schema as $tabkey => $tab ) : ?>
-				<div class="inspitz-tab<?php echo $first ? ' active' : ''; ?>" data-tab="<?php echo esc_attr( $tabkey ); ?>"><?php echo esc_html( $tab['label'] ); ?></div>
+			<?php $first = true; foreach ( $schema as $tabkey => $tab ) : ?>
+				<button type="button" class="inspitz-tab<?php echo $first ? ' active' : ''; ?>" data-tab="<?php echo esc_attr( $tabkey ); ?>"><?php echo esc_html( $tab['label'] ); ?></button>
 				<?php $first = false; endforeach; ?>
 		</div>
 
@@ -106,20 +114,19 @@ function inspitz_render_admin_page() {
 
 	<script>
 	(function(){
-		var tabs=document.querySelectorAll('.inspitz-tab');
-		tabs.forEach(function(t){t.addEventListener('click',function(){
-			document.querySelectorAll('.inspitz-tab').forEach(function(x){x.classList.remove('active');});
-			document.querySelectorAll('.inspitz-panel').forEach(function(x){x.classList.remove('active');});
-			t.classList.add('active');
-			document.getElementById('panel-'+t.dataset.tab).classList.add('active');
-		});});
-
-		// Media uploader
+		document.querySelectorAll('.inspitz-tab').forEach(function(t){
+			t.addEventListener('click',function(){
+				document.querySelectorAll('.inspitz-tab').forEach(function(x){x.classList.remove('active');});
+				document.querySelectorAll('.inspitz-panel').forEach(function(x){x.classList.remove('active');});
+				t.classList.add('active');
+				var p=document.getElementById('panel-'+t.dataset.tab); if(p) p.classList.add('active');
+			});
+		});
 		document.addEventListener('click',function(e){
-			if(e.target.classList.contains('inspitz-pick')){
+			var t=e.target;
+			if(t.classList.contains('inspitz-pick')){
 				e.preventDefault();
-				var wrap=e.target.closest('.inspitz-img');
-				var input=wrap.querySelector('input');
+				var wrap=t.closest('.inspitz-img'), input=wrap.querySelector('input');
 				var frame=wp.media({title:'Seleccionar imagen',multiple:false,library:{type:'image'}});
 				frame.on('select',function(){
 					var a=frame.state().get('selection').first().toJSON();
@@ -130,25 +137,17 @@ function inspitz_render_admin_page() {
 				});
 				frame.open();
 			}
-			if(e.target.classList.contains('inspitz-clear')){
+			if(t.classList.contains('inspitz-clear')){
 				e.preventDefault();
-				var w=e.target.closest('.inspitz-img'); w.querySelector('input').value=''; var im=w.querySelector('img'); if(im) im.remove();
+				var w=t.closest('.inspitz-img'); w.querySelector('input').value=''; var im=w.querySelector('img'); if(im) im.remove();
 			}
-			// repeater add
-			if(e.target.classList.contains('inspitz-add')){
+			if(t.classList.contains('inspitz-add')){
 				e.preventDefault();
-				var rep=e.target.closest('.inspitz-rep');
-				var tpl=rep.querySelector('.inspitz-rep-tpl');
-				var rows=rep.querySelector('.inspitz-rep-rows');
-				var idx=rows.children.length;
-				var html=tpl.innerHTML.replace(/__i__/g,idx);
-				var div=document.createElement('div'); div.innerHTML=html; rows.appendChild(div.firstElementChild);
+				var rep=t.closest('.inspitz-rep'), tpl=rep.querySelector('.inspitz-rep-tpl'), rows=rep.querySelector('.inspitz-rep-rows');
+				var div=document.createElement('div'); div.innerHTML=tpl.innerHTML.replace(/__i__/g,rows.children.length);
+				rows.appendChild(div.firstElementChild);
 			}
-			// repeater remove
-			if(e.target.classList.contains('inspitz-rm')){
-				e.preventDefault();
-				var row=e.target.closest('.inspitz-rep-row'); row.parentNode.removeChild(row);
-			}
+			if(t.classList.contains('inspitz-rm')){ e.preventDefault(); var row=t.closest('.inspitz-rep-row'); if(row) row.parentNode.removeChild(row); }
 		});
 	})();
 	</script>
@@ -165,8 +164,8 @@ function inspitz_field( $key, $f, $val ) {
 		echo '<div class="inspitz-img">';
 		if ( $val ) echo '<img src="' . esc_url( $val ) . '" alt="" />';
 		echo '<input type="text" name="' . $name . '" value="' . esc_attr( $val ) . '" placeholder="URL de la imagen" />';
-		echo '<button class="button inspitz-pick">Seleccionar</button> ';
-		echo '<button class="button inspitz-clear">Quitar</button>';
+		echo '<button type="button" class="button inspitz-pick">Seleccionar</button> ';
+		echo '<button type="button" class="button inspitz-clear">Quitar</button>';
 		echo '</div>';
 	} elseif ( $f['type'] === 'textarea' ) {
 		echo '<textarea name="' . $name . '">' . esc_textarea( $val ) . '</textarea>';
@@ -174,14 +173,12 @@ function inspitz_field( $key, $f, $val ) {
 		echo '<input type="url" name="' . $name . '" value="' . esc_attr( $val ) . '" placeholder="https://…" />';
 	} elseif ( $f['type'] === 'repeater' ) {
 		$rows = is_array( $val ) ? array_values( $val ) : array();
-		if ( empty( $rows ) ) $rows = array(); // allow empty
 		echo '<div class="inspitz-rep" data-key="' . esc_attr( $key ) . '">';
 		echo '<div class="inspitz-rep-rows">';
 		foreach ( $rows as $i => $row ) echo inspitz_rep_row( $key, $f['sub'], $i, $row );
 		echo '</div>';
-		// hidden template
 		echo '<div class="inspitz-rep-tpl" style="display:none">' . htmlspecialchars( inspitz_rep_row( $key, $f['sub'], '__i__', array() ) ) . '</div>';
-		echo '<button class="button inspitz-add">+ Añadir</button>';
+		echo '<button type="button" class="button inspitz-add">+ Añadir</button>';
 		echo '</div>';
 	} else {
 		echo '<input type="text" name="' . $name . '" value="' . esc_attr( $val ) . '" />';
@@ -193,7 +190,7 @@ function inspitz_field( $key, $f, $val ) {
 
 /** One repeater row markup. */
 function inspitz_rep_row( $key, $sub, $i, $row ) {
-	$h = '<div class="inspitz-rep-row"><button class="button inspitz-rm">×</button>';
+	$h = '<div class="inspitz-rep-row"><button type="button" class="inspitz-rm" title="Quitar">&times;</button>';
 	foreach ( $sub as $sk => $slabel ) {
 		$v = isset( $row[ $sk ] ) ? $row[ $sk ] : '';
 		$n = 'inspirall_traz[' . esc_attr( $key ) . '][' . $i . '][' . esc_attr( $sk ) . ']';
