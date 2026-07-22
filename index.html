@@ -18,6 +18,7 @@
 <header class="topbar" id="topbar">
   <div class="topbar__inner">
     <a class="brand" href="#hero" aria-label="Inspirall — inicio">
+      <img class="brand__img" src="assets/logo-inspirall.png" alt="Inspirall" onload="this.closest('.brand').classList.add('brand--haslogo')" onerror="this.remove()" />
       <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
         <path d="M16 4a12 12 0 1 0 8.5 20.5" fill="none" stroke="var(--turquoise)" stroke-width="2.6" stroke-linecap="round"/>
         <path d="M16 10a6 6 0 1 0 4.2 10.2" fill="none" stroke="var(--phyco)" stroke-width="2.6" stroke-linecap="round"/>
@@ -65,11 +66,14 @@
       </div>
 
       <div class="hero__product reveal">
-        <!-- Mockup CSS del envase — reemplazar por foto real cuando esté disponible -->
-        <div class="pouch pouch--hero">
+        <figure class="shot shot--hero">
+          <img class="shot__img" src="assets/fico-crispy-hero.png" alt="Lata de Fico Crispy Blend 100 g" onload="this.closest('.shot').classList.add('shot--hasimg')" onerror="this.remove()" />
+          <!-- Respaldo: mockup CSS mientras no exista la foto real -->
+          <div class="pouch pouch--hero">
           <span class="pouch__seal" aria-hidden="true"></span>
           <div class="pouch__body">
             <span class="pouch__brand">inspirall</span>
+            <span class="pouch__by">by Ultragreen</span>
             <span class="pouch__kicker">100% espirulina artesanal peruana</span>
             <svg class="pouch__mark" viewBox="0 0 48 48" aria-hidden="true">
               <path d="M24 5a19 19 0 1 0 13.4 32.4" fill="none" stroke="var(--turquoise)" stroke-width="3" stroke-linecap="round"/>
@@ -80,7 +84,8 @@
             <span class="pouch__band">Blend</span>
             <span class="pouch__net">100 g = 1 mes de felicidad</span>
           </div>
-        </div>
+          </div>
+        </figure>
         <p class="hero__note">
           100% espirulina peruana, lista para sumar nutrición todos los días.
           Un blend funcional creado para complementar tu alimentación de forma práctica y natural.
@@ -94,9 +99,12 @@
   <section class="section product" id="producto">
     <div class="wrap product__grid">
       <div class="product__media reveal">
-        <div class="photo-panel photo-panel--tall" data-photo="Fico Crispy Blend · vista de producto">
-          <div class="photo-panel__ficonode" aria-hidden="true"></div>
-        </div>
+        <figure class="shot">
+          <img class="shot__img" src="assets/fico-crispy-producto.jpg" alt="Fico Crispy Blend 100 g" onload="this.closest('.shot').classList.add('shot--hasimg')" onerror="this.remove()" />
+          <div class="photo-panel photo-panel--tall" data-photo="Fico Crispy Blend · vista de producto">
+            <div class="photo-panel__ficonode" aria-hidden="true"></div>
+          </div>
+        </figure>
       </div>
 
       <div class="product__info reveal">
@@ -128,6 +136,56 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ============ 3b. INFORMACIÓN NUTRICIONAL (datos del envase) ============ -->
+  <section class="section nutrition" id="nutricion">
+    <div class="wrap nutrition__head reveal">
+      <p class="eyebrow">Información del producto</p>
+      <h2 class="section__title">Información nutricional</h2>
+      <p class="lead lead--center">Valores por porción de 100 g, tal como figuran en el envase de Fico Crispy Blend.</p>
+    </div>
+
+    <div class="wrap nutrition__grid reveal">
+      <!-- Panel de información nutricional -->
+      <div class="nfacts">
+        <p class="nfacts__title">Información nutricional</p>
+        <div class="nfacts__head"><span>Tamaño de la porción</span><b>100 g</b></div>
+        <div class="nfacts__cal"><span>Calorías</span><b>350</b></div>
+        <p class="nfacts__vd">% Valor Diario*</p>
+        <ul class="nfacts__list">
+          <li><span>Grasa total 0 g</span><b>0%</b></li>
+          <li><span>Grasa saturada 0 g</span><b>0%</b></li>
+          <li><span>Grasa trans 0 g</span><b></b></li>
+          <li><span>Sodio 580 mg</span><b>25%</b></li>
+          <li><span>Carbohidratos totales 28 g</span><b>10%</b></li>
+          <li><span>Azúcares totales 8 g</span><b></b></li>
+          <li class="is-strong"><span>Proteína 60 g</span><b></b></li>
+        </ul>
+      </div>
+
+      <!-- Minerales, vitaminas e info del envase -->
+      <div class="nutrition__side">
+        <div class="nmin">
+          <h3>Minerales y vitaminas</h3>
+          <ul>
+            <li><span>Calcio 265 mg</span><b>20%</b></li>
+            <li><span>Fósforo 692 mg</span><b>55%</b></li>
+            <li><span>Hierro 36.9 mg</span><b>205%</b></li>
+            <li><span>Magnesio 263 mg</span><b>63%</b></li>
+            <li><span>Manganeso 9.17 mg</span><b>51%</b></li>
+            <li><span>Potasio 1452 mg</span><b>31%</b></li>
+            <li><span>Zinc 3.18 mg</span><b>31%</b></li>
+            <li><span>Vitamina C 64.88 mg</span><b>72%</b></li>
+          </ul>
+        </div>
+        <div class="ninfo">
+          <div><span class="ninfo__k">Ingredientes</span><p>Espirulina, arándano, moringa, granada. 100% peruana.</p></div>
+          <div><span class="ninfo__k">Conservación</span><p>1 año y 6 meses. Mantener en un lugar fresco y seco. Una vez abierto, conservar el envase bien cerrado.</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="wrap note reveal">*Los porcentajes de Valores Diarios se basan en una dieta de 2000 calorías. Fabricado por Ultragreen Sustainability S.A.C.</p>
   </section>
 
   <!-- ============ 4. INTRODUCCIÓN AL RECORRIDO ============ -->
@@ -263,9 +321,12 @@
           </header>
 
           <div class="stage__split">
-            <div class="photo-panel" data-photo="Centro de cultivo · nave de espirulina">
-              <span class="photo-panel__hint">Foto real: centro de cultivo / supervisión</span>
-            </div>
+            <figure class="shot">
+              <img class="shot__img" src="assets/cultivo.jpg" alt="Centro de cultivo de espirulina en el Perú" onload="this.closest('.shot').classList.add('shot--hasimg')" onerror="this.remove()" />
+              <div class="photo-panel" data-photo="Centro de cultivo · nave de espirulina">
+                <span class="photo-panel__hint">Foto real: centro de cultivo / supervisión</span>
+              </div>
+            </figure>
             <div class="datablock">
               <div class="datablock__row">
                 <span class="datablock__key">Procedencia</span>
@@ -304,9 +365,12 @@
           </header>
 
           <div class="stage__split stage__split--rev">
-            <div class="photo-panel" data-photo="Cosecha del lote · registro de fecha y hora">
-              <span class="photo-panel__hint">Foto real: cosecha del lote</span>
-            </div>
+            <figure class="shot">
+              <img class="shot__img" src="assets/cosecha.jpg" alt="Cosecha registrada del lote de espirulina" onload="this.closest('.shot').classList.add('shot--hasimg')" onerror="this.remove()" />
+              <div class="photo-panel" data-photo="Cosecha del lote · registro de fecha y hora">
+                <span class="photo-panel__hint">Foto real: cosecha del lote</span>
+              </div>
+            </figure>
             <div class="datablock">
               <div class="datablock__row"><span class="datablock__key">Horario</span><span class="datablock__val">De 8:00 a. m. a 11:00 a. m.</span></div>
               <div class="datablock__row"><span class="datablock__key">Frecuencia</span><span class="datablock__val">Cada fin de mes.</span></div>
@@ -434,7 +498,9 @@
           <div class="stage__split stage__split--rev">
             <div class="stage__media-col">
               <div class="pack">
-                <div class="pouch pouch--sm">
+                <figure class="shot shot--pack">
+                  <img class="shot__img" src="assets/fico-crispy-envase.jpg" alt="Envase Fico Crispy Blend 100 g" onload="this.closest('.shot').classList.add('shot--hasimg')" onerror="this.remove()" />
+                  <div class="pouch pouch--sm">
                   <span class="pouch__seal" aria-hidden="true"></span>
                   <div class="pouch__body">
                     <span class="pouch__brand">inspirall</span>
@@ -447,7 +513,8 @@
                     <span class="pouch__band">Blend</span>
                     <span class="pouch__net">100 g</span>
                   </div>
-                </div>
+                  </div>
+                </figure>
                 <div class="pack__qr">
                   <div class="qr" data-qr-mini aria-label="Código QR del lote"></div>
                   <span class="mono pack__lote">LOTE <b data-lote>—</b></span>
@@ -643,6 +710,7 @@
   <div class="wrap footer__grid">
     <div class="footer__brand">
       <a class="brand brand--light" href="#hero">
+        <img class="brand__img" src="assets/logo-inspirall-white.png" alt="Inspirall" onload="this.closest('.brand').classList.add('brand--haslogo')" onerror="this.remove()" />
         <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
           <path d="M16 4a12 12 0 1 0 8.5 20.5" fill="none" stroke="var(--turquoise)" stroke-width="2.6" stroke-linecap="round"/>
           <path d="M16 10a6 6 0 1 0 4.2 10.2" fill="none" stroke="var(--phyco)" stroke-width="2.6" stroke-linecap="round"/>
