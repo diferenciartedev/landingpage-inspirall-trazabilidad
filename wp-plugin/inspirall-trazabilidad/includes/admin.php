@@ -33,6 +33,8 @@ function inspitz_sanitize( $input ) {
 					if ( strlen( implode( '', $r ) ) ) $clean[] = $r;
 				}
 				$out[ $key ] = $clean;
+			} elseif ( $f['type'] === 'toggle' ) {
+				$out[ $key ] = ( isset( $input[ $key ] ) && $input[ $key ] === '1' ) ? '1' : '';
 			} elseif ( $f['type'] === 'url' || $f['type'] === 'image' ) {
 				$out[ $key ] = esc_url_raw( trim( isset( $input[ $key ] ) ? $input[ $key ] : '' ) );
 			} elseif ( $f['type'] === 'textarea' ) {
@@ -77,6 +79,8 @@ function inspitz_admin_css() {
 	.inspitz-sub input{width:100%;padding:7px 10px;border:1px solid #8c8f94;border-radius:5px;box-sizing:border-box;font-size:13px}
 	.inspitz-rm{position:absolute;top:-11px;right:-11px;width:26px;height:26px;padding:0;border-radius:50%;border:1px solid #dcdcde;background:#fff;cursor:pointer;line-height:22px;font-size:17px;color:#d63638;text-align:center}
 	.inspitz-rm:hover{background:#d63638;color:#fff;border-color:#d63638}
+	.inspitz-toggle{display:flex;align-items:center;gap:9px;font-weight:600;font-size:14px;cursor:pointer;color:#1d2327}
+	.inspitz-toggle input{width:18px;height:18px;margin:0}
 	';
 }
 
@@ -158,6 +162,15 @@ function inspitz_render_admin_page() {
 function inspitz_field( $key, $f, $val ) {
 	$name = 'inspirall_traz[' . esc_attr( $key ) . ']';
 	echo '<div class="inspitz-field">';
+
+	if ( $f['type'] === 'toggle' ) {
+		$checked = ( $val === '1' ) ? ' checked' : '';
+		echo '<label class="inspitz-toggle"><input type="checkbox" name="' . $name . '" value="1"' . $checked . ' /> ' . esc_html( $f['label'] ) . '</label>';
+		if ( ! empty( $f['help'] ) ) echo '<div class="inspitz-help">' . esc_html( $f['help'] ) . '</div>';
+		echo '</div>';
+		return;
+	}
+
 	echo '<label>' . esc_html( $f['label'] ) . '</label>';
 
 	if ( $f['type'] === 'image' ) {

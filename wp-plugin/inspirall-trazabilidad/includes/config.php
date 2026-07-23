@@ -21,6 +21,21 @@ function inspitz_schema() {
 			'lote_default' => array( 'type' => 'text',     'label' => 'Código de lote por defecto', 'default' => 'FCB-2025-0001', 'help' => 'Se sobreescribe con ?lote= en la URL del QR.' ),
 		) ),
 
+		'secciones' => array( 'label' => 'Secciones (mostrar/ocultar)', 'fields' => array(
+			'sec_nutricion'       => array( 'type' => 'toggle', 'label' => 'Información nutricional', 'default' => '1' ),
+			'sec_origen'          => array( 'type' => 'toggle', 'label' => '01 · Origen', 'default' => '1' ),
+			'sec_cultivo'         => array( 'type' => 'toggle', 'label' => '02 · Cultivo', 'default' => '1' ),
+			'sec_cosecha'         => array( 'type' => 'toggle', 'label' => '03 · Cosecha', 'default' => '1' ),
+			'sec_nanotech'        => array( 'type' => 'toggle', 'label' => '04 · Acopio y Nanotech', 'default' => '1' ),
+			'sec_lote'            => array( 'type' => 'toggle', 'label' => '05 · Identificación del lote', 'default' => '1' ),
+			'sec_identificacion'  => array( 'type' => 'toggle', 'label' => '06 · Sellado y rotulado', 'default' => '1' ),
+			'sec_distribucion'    => array( 'type' => 'toggle', 'label' => '07 · Distribución', 'default' => '1' ),
+			'sec_blockchain'      => array( 'type' => 'toggle', 'label' => '08 · Trazabilidad blockchain', 'default' => '1' ),
+			'sec_certificaciones' => array( 'type' => 'toggle', 'label' => '09 · Certificaciones', 'default' => '1' ),
+			'sec_proposito'       => array( 'type' => 'toggle', 'label' => '10 · Propósito', 'default' => '1' ),
+			'sec_cierre'          => array( 'type' => 'toggle', 'label' => '11 · Cierre', 'default' => '1' ),
+		) ),
+
 		'imagenes' => array( 'label' => 'Imágenes (tamaños)', 'fields' => array(
 			'img_hero_w'   => array( 'type' => 'text', 'label' => 'Ancho de la foto del hero (px)', 'default' => '360', 'help' => 'El pomo / lata en la portada. Ej.: 360' ),
 			'img_prod_w'   => array( 'type' => 'text', 'label' => 'Ancho de la foto de producto (px)', 'default' => '460', 'help' => 'Sección «Fico Crispy Blend».' ),

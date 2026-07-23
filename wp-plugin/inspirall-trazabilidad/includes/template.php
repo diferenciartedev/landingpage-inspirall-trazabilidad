@@ -8,6 +8,7 @@ function iza( $k ) { $o = $GLOBALS['inspitz_o']; return esc_attr( isset( $o[$k] 
 function izu( $k ) { $o = $GLOBALS['inspitz_o']; return esc_url( isset( $o[$k] ) ? $o[$k] : '' ); }
 function iznl( $k ){ $o = $GLOBALS['inspitz_o']; return nl2br( esc_html( isset( $o[$k] ) ? $o[$k] : '' ) ); }
 function izraw( $k ){ $o = $GLOBALS['inspitz_o']; return isset( $o[$k] ) ? $o[$k] : ''; }
+function iz_show( $k ){ $o = $GLOBALS['inspitz_o']; return ! isset( $o[$k] ) || $o[$k] === '1'; }
 
 /** figure.shot with real photo (if set) + fallback markup. $style = inline CSS vars. */
 function iz_shot( $url, $wrapClass, $alt, $fallback, $style = '' ) {
@@ -73,6 +74,24 @@ function inspitz_render() {
 	$prod_style  = '--shot-w:' . max( 120, intval( $o['img_prod_w'] ) ) . 'px;--shot-ar:' . ( $o['img_prod_ar'] ? $o['img_prod_ar'] : '3 / 4' );
 	$stage_style = '--shot-ar:' . ( $o['img_stage_ar'] ? $o['img_stage_ar'] : '4 / 3' );
 	$env_style   = '--shot-w:' . max( 100, intval( $o['img_envase_w'] ) ) . 'px';
+
+	// Visible stages → sequential numbering + which one is last (for the rail cap)
+	$stage_keys = array(
+		'sec_origen' => 'etapa-origen', 'sec_cultivo' => 'etapa-cultivo', 'sec_cosecha' => 'etapa-cosecha',
+		'sec_nanotech' => 'etapa-nanotech', 'sec_lote' => 'etapa-lote', 'sec_identificacion' => 'etapa-identificacion',
+		'sec_distribucion' => 'etapa-distribucion',
+	);
+	$stage_labels = array(
+		'sec_origen' => 'Origen', 'sec_cultivo' => 'Cultivo', 'sec_cosecha' => 'Cosecha',
+		'sec_nanotech' => 'Acopio y Nanotech', 'sec_lote' => 'Identificación del lote',
+		'sec_identificacion' => 'Sellado y rotulado', 'sec_distribucion' => 'Distribución',
+	);
+	$snum = array(); $c = 0; $last_stage = '';
+	foreach ( $stage_keys as $sk => $anchor ) { if ( iz_show( $sk ) ) { $c++; $snum[ $sk ] = sprintf( '%02d', $c ); $last_stage = $sk; } }
+	$rail_last = function ( $sk ) use ( $last_stage ) { return $sk === $last_stage ? ' stage__rail--last' : ''; };
+	$stepper_items = array();
+	foreach ( $stage_keys as $sk => $anchor ) { if ( iz_show( $sk ) ) $stepper_items[] = array( '#' . $anchor, $stage_labels[ $sk ] ); }
+	if ( iz_show( 'sec_blockchain' ) ) $stepper_items[] = array( '#blockchain', 'Blockchain' );
 
 	$check_ico = '<svg class="ico ico--check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4 10-10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 	$zone_pos = array(
@@ -158,7 +177,7 @@ function inspitz_render() {
 		</div>
 	</section>
 
-	<?php echo inspitz_nutrition_html(); ?>
+	<?php if ( iz_show( 'sec_nutricion' ) ) echo inspitz_nutrition_html(); ?>
 
 	<!-- RECORRIDO -->
 	<section class="section journey" id="recorrido">
@@ -169,19 +188,17 @@ function inspitz_render() {
 		</div>
 		<div class="wrap">
 			<ol class="stepper reveal">
-				<?php
-				$steps = array( array('#etapa-origen','Origen'), array('#etapa-cultivo','Cultivo'), array('#etapa-cosecha','Cosecha'), array('#etapa-nanotech','Acopio y Nanotech'), array('#etapa-lote','Identificación del lote'), array('#etapa-identificacion','Sellado y rotulado'), array('#etapa-distribucion','Distribución'), array('#blockchain','Blockchain') );
-				foreach ( $steps as $i => $s ) printf('<li class="stepper__item"><a href="%s"><span class="stepper__num">%02d</span><span class="stepper__label">%s</span></a></li>', esc_attr($s[0]), $i+1, esc_html($s[1]));
-				?>
+				<?php foreach ( $stepper_items as $i => $s ) printf('<li class="stepper__item"><a href="%s"><span class="stepper__num">%02d</span><span class="stepper__label">%s</span></a></li>', esc_attr($s[0]), $i+1, esc_html($s[1])); ?>
 			</ol>
 		</div>
 	</section>
 
 	<div class="stages">
+		<?php if ( iz_show('sec_origen') ) : ?>
 		<!-- 01 ORIGEN -->
 		<section class="stage" id="etapa-origen">
 			<div class="wrap stage__grid reveal">
-				<div class="stage__rail"><span class="stage__node" aria-hidden="true">01</span></div>
+				<div class="stage__rail<?php echo $rail_last('sec_origen'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_origen']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('origen_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('origen_title'); ?></h2><p class="lead"><?php echo iz('origen_desc'); ?></p></header>
 					<div class="origin__grid">
@@ -211,11 +228,13 @@ function inspitz_render() {
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
+		<?php if ( iz_show('sec_cultivo') ) : ?>
 		<!-- 02 CULTIVO -->
 		<section class="stage" id="etapa-cultivo">
 			<div class="wrap stage__grid reveal">
-				<div class="stage__rail"><span class="stage__node" aria-hidden="true">02</span></div>
+				<div class="stage__rail<?php echo $rail_last('sec_cultivo'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_cultivo']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cultivo_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cultivo_title'); ?></h2><p class="lead"><?php echo iz('cultivo_desc'); ?></p></header>
 					<div class="stage__split">
@@ -232,11 +251,13 @@ function inspitz_render() {
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
+		<?php if ( iz_show('sec_cosecha') ) : ?>
 		<!-- 03 COSECHA -->
 		<section class="stage" id="etapa-cosecha">
 			<div class="wrap stage__grid reveal">
-				<div class="stage__rail"><span class="stage__node" aria-hidden="true">03</span></div>
+				<div class="stage__rail<?php echo $rail_last('sec_cosecha'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_cosecha']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cosecha_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cosecha_title'); ?></h2><p class="lead"><?php echo iz('cosecha_desc'); ?></p></header>
 					<div class="stage__split stage__split--rev">
@@ -251,11 +272,13 @@ function inspitz_render() {
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
+		<?php if ( iz_show('sec_nanotech') ) : ?>
 		<!-- 04 NANOTECH -->
 		<section class="stage stage--feature" id="etapa-nanotech">
 			<div class="wrap stage__grid reveal">
-				<div class="stage__rail"><span class="stage__node" aria-hidden="true">04</span></div>
+				<div class="stage__rail<?php echo $rail_last('sec_nanotech'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_nanotech']; ?></span></div>
 				<div class="stage__content">
 					<div class="feature">
 						<header class="stage__intro stage__intro--center"><p class="eyebrow eyebrow--light"><?php echo iz('nano_eyebrow'); ?></p><h2 class="section__title section__title--light"><?php echo iz('nano_title'); ?></h2><p class="feature__subtitle"><?php echo iz('nano_subtitle'); ?></p></header>
@@ -276,11 +299,13 @@ function inspitz_render() {
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
+		<?php if ( iz_show('sec_lote') ) : ?>
 		<!-- 05 LOTE -->
 		<section class="stage" id="etapa-lote">
 			<div class="wrap stage__grid reveal">
-				<div class="stage__rail"><span class="stage__node" aria-hidden="true">05</span></div>
+				<div class="stage__rail<?php echo $rail_last('sec_lote'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_lote']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('lote_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('lote_title'); ?></h2><p class="lead"><?php echo iz('lote_desc'); ?></p></header>
 					<div class="lote-grid stagger">
@@ -300,11 +325,13 @@ function inspitz_render() {
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
+		<?php if ( iz_show('sec_identificacion') ) : ?>
 		<!-- 06 IDENTIFICACIÓN -->
 		<section class="stage" id="etapa-identificacion">
 			<div class="wrap stage__grid reveal">
-				<div class="stage__rail"><span class="stage__node" aria-hidden="true">06</span></div>
+				<div class="stage__rail<?php echo $rail_last('sec_identificacion'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_identificacion']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('ident_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('ident_title'); ?></h2><p class="lead"><?php echo iz('ident_desc'); ?></p></header>
 					<div class="stage__split stage__split--rev">
@@ -326,11 +353,13 @@ function inspitz_render() {
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 
+		<?php if ( iz_show('sec_distribucion') ) : ?>
 		<!-- 07 DISTRIBUCIÓN -->
 		<section class="stage" id="etapa-distribucion">
 			<div class="wrap stage__grid reveal">
-				<div class="stage__rail stage__rail--last"><span class="stage__node" aria-hidden="true">07</span></div>
+				<div class="stage__rail<?php echo $rail_last('sec_distribucion'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_distribucion']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('dist_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('dist_title'); ?></h2><p class="lead"><?php echo iz('dist_desc'); ?></p></header>
 					<div class="dist__grid stagger">
@@ -345,8 +374,10 @@ function inspitz_render() {
 				</div>
 			</div>
 		</section>
+		<?php endif; ?>
 	</div><!-- /stages -->
 
+	<?php if ( iz_show('sec_blockchain') ) : ?>
 	<!-- BLOCKCHAIN -->
 	<section class="section blockchain" id="blockchain">
 		<div class="blockchain__bg" aria-hidden="true"></div>
@@ -372,7 +403,9 @@ function inspitz_render() {
 			</div>
 		</div>
 	</section>
+	<?php endif; ?>
 
+	<?php if ( iz_show('sec_certificaciones') ) : ?>
 	<!-- CERTIFICACIONES -->
 	<section class="section certs" id="certificaciones">
 		<div class="wrap certs__head reveal">
@@ -405,7 +438,9 @@ function inspitz_render() {
 			</article>
 		</div>
 	</section>
+	<?php endif; ?>
 
+	<?php if ( iz_show('sec_proposito') ) : ?>
 	<!-- PROPÓSITO -->
 	<section class="section purpose" id="proposito">
 		<div class="purpose__bg" aria-hidden="true"></div>
@@ -419,7 +454,9 @@ function inspitz_render() {
 			</div>
 		</div>
 	</section>
+	<?php endif; ?>
 
+	<?php if ( iz_show('sec_cierre') ) : ?>
 	<!-- CIERRE -->
 	<section class="section closing" id="cierre">
 		<div class="wrap closing__inner reveal">
@@ -432,6 +469,7 @@ function inspitz_render() {
 			<a href="#hero" class="closing__back" data-scroll>Volver al inicio del lote</a>
 		</div>
 	</section>
+	<?php endif; ?>
 </main>
 
 <footer class="footer">
