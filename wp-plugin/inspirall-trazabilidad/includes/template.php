@@ -202,6 +202,8 @@ function inspitz_render() {
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('origen_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('origen_title'); ?></h2><p class="lead"><?php echo iz('origen_desc'); ?></p></header>
 					<div class="origin__grid">
+						<figure class="shot shot--map">
+						<?php if ( izraw('origen_mapa') ) echo '<img class="shot__img" src="' . esc_url( izraw('origen_mapa') ) . '" alt="Mapa de zonas de cultivo en el Perú" onload="this.closest(\'.shot\').classList.add(\'shot--hasimg\')" onerror="this.remove()" />'; ?>
 						<div class="map" aria-label="Mapa de zonas de cultivo en el Perú">
 							<div class="map__axis"><span>Norte</span><span>Centro</span><span>Sur</span></div>
 							<div class="map__field">
@@ -210,6 +212,7 @@ function inspitz_render() {
 								<span class="map__caption">Perú · de norte a sur</span>
 							</div>
 						</div>
+						</figure>
 						<div class="zones stagger">
 							<?php foreach ( (array) izraw('zones') as $i => $z ) : ?>
 								<article class="zone" id="zone-<?php echo $i; ?>">

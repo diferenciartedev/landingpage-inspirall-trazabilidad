@@ -76,6 +76,7 @@ function inspitz_schema() {
 			'origen_eyebrow' => array( 'type' => 'text',     'label' => 'Categoría', 'default' => 'Origen' ),
 			'origen_title'   => array( 'type' => 'text',     'label' => 'Título', 'default' => 'Cultivada bajo el sol más exigente del Perú' ),
 			'origen_desc'    => array( 'type' => 'textarea', 'label' => 'Texto', 'default' => 'La espirulina utilizada en Fico Crispy Blend proviene de centros de cultivo ubicados en distintas regiones del Perú. Cada zona presenta condiciones solares y productivas particulares.' ),
+			'origen_mapa'    => array( 'type' => 'image',    'label' => 'Mapa (imagen, opcional)', 'help' => 'Sube un mapa del Perú con las zonas. Si lo dejas vacío se muestra el mapa estilizado con puntos.' ),
 			'origen_note'    => array( 'type' => 'text',     'label' => 'Nota (GHI)', 'default' => 'GHI: Irradiación Horizontal Global recibida por una superficie.' ),
 			'zones' => array( 'type' => 'repeater', 'label' => 'Zonas de procedencia', 'sub' => array(
 				'nombre' => 'Zona', 'lugar' => 'Lugar', 'ghi' => 'GHI (kWh/m²)', 'produccion' => 'Producción mensual', 'volumen' => 'Volumen', 'co2' => 'Captura CO₂ / año' ),
