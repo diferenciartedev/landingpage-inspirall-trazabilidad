@@ -75,6 +75,18 @@ p { margin: 0; }
 .inspitz-root figure { margin: 0 !important; }
 .inspitz-root img { max-width: 100%; height: auto; }
 .inspitz-root ul, .inspitz-root ol { margin: 0; padding: 0; }
+/* Theme-proofing: force our layout containers to keep their display so the
+   theme/Elementor can't collapse them (which made rev-splits stack). */
+.inspitz-root .hero__grid, .inspitz-root .product__grid, .inspitz-root .stage__grid,
+.inspitz-root .stage__split, .inspitz-root .origin__grid, .inspitz-root .nutrition__grid,
+.inspitz-root .blockchain__grid, .inspitz-root .dist__grid, .inspitz-root .certs__grid,
+.inspitz-root .zones, .inspitz-root .benefits, .inspitz-root .pillars,
+.inspitz-root .lote-grid, .inspitz-root .checks, .inspitz-root .zone__stats,
+.inspitz-root .stepper { display: grid !important; }
+.inspitz-root .hero__product, .inspitz-root .stage__media-col, .inspitz-root .chips,
+.inspitz-root .closing__actions, .inspitz-root .footer__social { display: flex !important; }
+.inspitz-root .stage__split { grid-template-columns: 1fr 1fr !important; }
+@media (max-width: 820px) { .inspitz-root .stage__split { grid-template-columns: 1fr !important; } }
 
 :focus-visible { outline: 3px solid var(--phyco); outline-offset: 3px; border-radius: 6px; }
 
@@ -354,7 +366,9 @@ p { margin: 0; }
 .stage__split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3.5vw, 2.6rem); align-items: start; margin-top: 2rem; }
 .stage__split > * { min-width: 0; }
 .stage__split--rev > :first-child { order: 2; }
-.stage__media-col { display: flex; flex-direction: column; align-items: flex-start; }
+.stage__media-col { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; width: 100%; }
+.stage__media-col .shot, .stage__media-col .pack__qr { width: 100%; max-width: 260px; }
+.stage__media-col .badge-vegan { margin-top: 0; }
 
 @media (max-width: 820px) {
   .stage__grid { grid-template-columns: 44px minmax(0,1fr); column-gap: 1rem; }

@@ -340,7 +340,7 @@ function inspitz_render() {
 					<div class="stage__split stage__split--rev">
 						<div class="stage__media-col">
 							<?php echo iz_shot( izraw('ident_image'), 'shot--pack', 'Envase Fico Crispy Blend', iz_can('sm'), $env_style ); ?>
-							<div class="pack__qr" style="margin-top:1rem"><div class="qr" data-qr-mini aria-label="Código QR del lote"></div><span class="mono pack__lote">LOTE <b data-lote><?php echo iz('lote_default'); ?></b></span></div>
+							<div class="pack__qr"><div class="qr" data-qr-mini aria-label="Código QR del lote"></div><span class="mono pack__lote">LOTE <b data-lote><?php echo iz('lote_default'); ?></b></span></div>
 							<span class="badge-vegan" data-vegan-badge hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14c6 1 10-3 16-10-1 9-6 15-13 15-2 0-3-1-3-3 0-1 0-1.5.5-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Vegano</span>
 						</div>
 						<div class="datablock">
