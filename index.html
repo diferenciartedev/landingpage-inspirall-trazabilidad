@@ -462,18 +462,26 @@
             </p>
           </header>
 
-          <div class="lote-grid stagger">
-            <div class="lote-cell"><span>Código del lote</span><b class="mono" data-lote>—</b></div>
-            <div class="lote-cell"><span>Producto</span><b>Fico Crispy Blend</b></div>
-            <div class="lote-cell"><span>Presentación</span><b>100 g</b></div>
-            <div class="lote-cell"><span>Procedencia</span><b data-sede>Según el lote</b></div>
-            <div class="lote-cell"><span>Fecha y hora de inoculación</span><b data-fecha-inoculacion>Registrada en el lote</b></div>
-            <div class="lote-cell"><span>Fecha y hora de cosecha</span><b data-fecha-cosecha>Registrada en el lote</b></div>
-            <div class="lote-cell"><span>Responsable</span><b>Asociación / familiar agricultor</b></div>
-            <div class="lote-cell"><span>Tipo de cultivo</span><b>Agua tratada, 100% reciclada</b></div>
-            <div class="lote-cell"><span>Proceso</span><b>Phyco-Active Nano-Blend</b></div>
-            <div class="lote-cell"><span>Datos de distribución</span><b>Asociados al lote</b></div>
-            <div class="lote-cell lote-cell--wide"><span>Código de transacción blockchain</span><b class="mono" data-hash>Registro blockchain pendiente de integración</b></div>
+          <div class="stage__split">
+            <div class="stage__media-col">
+              <figure class="shot shot--photo" style="--shot-ar:4 / 3">
+                <img class="shot__img" src="assets/fico-crispy-lote.jpg" alt="Fico Crispy Blend · lote" onload="this.closest('.shot').classList.add('shot--hasimg')" onerror="this.remove()" />
+                <div class="photo-panel" data-photo="Producto / lote"><span class="photo-panel__hint">Foto real (opcional)</span></div>
+              </figure>
+            </div>
+            <div class="datablock">
+              <div class="datablock__row"><span class="datablock__key">Código del lote</span><span class="datablock__val mono" data-lote>—</span></div>
+              <div class="datablock__row"><span class="datablock__key">Producto</span><span class="datablock__val">Fico Crispy Blend</span></div>
+              <div class="datablock__row"><span class="datablock__key">Presentación</span><span class="datablock__val">100 g</span></div>
+              <div class="datablock__row"><span class="datablock__key">Procedencia</span><span class="datablock__val" data-sede>Según el lote</span></div>
+              <div class="datablock__row"><span class="datablock__key">Inoculación</span><span class="datablock__val" data-fecha-inoculacion>Registrada en el lote</span></div>
+              <div class="datablock__row"><span class="datablock__key">Cosecha</span><span class="datablock__val" data-fecha-cosecha>Registrada en el lote</span></div>
+              <div class="datablock__row"><span class="datablock__key">Responsable</span><span class="datablock__val">Asociación / familiar agricultor</span></div>
+              <div class="datablock__row"><span class="datablock__key">Tipo de cultivo</span><span class="datablock__val">Agua tratada, 100% reciclada</span></div>
+              <div class="datablock__row"><span class="datablock__key">Proceso</span><span class="datablock__val">Phyco-Active Nano-Blend</span></div>
+              <div class="datablock__row"><span class="datablock__key">Distribución</span><span class="datablock__val">Asociados al lote</span></div>
+              <div class="datablock__row"><span class="datablock__key">Transacción blockchain</span><span class="datablock__val mono" data-hash>Registro blockchain pendiente de integración</span></div>
+            </div>
           </div>
           <p class="quote">Cada envase conecta al consumidor con la historia registrada de su lote.</p>
         </div>
@@ -553,24 +561,32 @@
             </p>
           </header>
 
-          <div class="dist__grid stagger">
-            <article class="dist-card">
-              <div class="dist-card__top">
-                <svg class="dist-card__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16V7h10v9M14 10h4l2 3v3h-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-                <div><h3>Lima Metropolitana</h3><span class="dist-card__method">Entrega motorizada</span></div>
-              </div>
-              <p>Las entregas locales se realizan mediante un delivery motorizado de confianza en distritos seleccionados de Lima Metropolitana.</p>
-              <div class="dist-card__eta"><span>Tiempo estimado</span><b>24 a 48 horas</b></div>
-            </article>
+          <div class="stage__split stage__split--rev">
+            <div class="stage__media-col">
+              <figure class="shot shot--photo" style="--shot-ar:4 / 3">
+                <img class="shot__img" src="assets/fico-crispy-distribucion.jpg" alt="Distribución Fico Crispy Blend" onload="this.closest('.shot').classList.add('shot--hasimg')" onerror="this.remove()" />
+                <div class="photo-panel" data-photo="Distribución"><span class="photo-panel__hint">Foto real (opcional)</span></div>
+              </figure>
+            </div>
+            <div class="dist__col" style="display:flex;flex-direction:column;gap:clamp(1rem,2vw,1.4rem)">
+              <article class="dist-card">
+                <div class="dist-card__top">
+                  <svg class="dist-card__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16V7h10v9M14 10h4l2 3v3h-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="17" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                  <div><h3>Lima Metropolitana</h3><span class="dist-card__method">Entrega motorizada</span></div>
+                </div>
+                <p>Las entregas locales se realizan mediante un delivery motorizado de confianza en distritos seleccionados de Lima Metropolitana.</p>
+                <div class="dist-card__eta"><span>Tiempo estimado</span><b>24 a 48 horas</b></div>
+              </article>
 
-            <article class="dist-card">
-              <div class="dist-card__top">
-                <svg class="dist-card__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.7" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="1.7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-                <div><h3>Provincias</h3><span class="dist-card__method">Operadores logísticos nacionales</span></div>
-              </div>
-              <p>Para los envíos a provincias se trabaja con operadores logísticos como Olva o Shalom.</p>
-              <div class="dist-card__eta"><span>Tiempo estimado</span><b>3 a 5 días</b></div>
-            </article>
+              <article class="dist-card">
+                <div class="dist-card__top">
+                  <svg class="dist-card__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.7" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="1.7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+                  <div><h3>Provincias</h3><span class="dist-card__method">Operadores logísticos nacionales</span></div>
+                </div>
+                <p>Para los envíos a provincias se trabaja con operadores logísticos como Olva o Shalom.</p>
+                <div class="dist-card__eta"><span>Tiempo estimado</span><b>3 a 5 días</b></div>
+              </article>
+            </div>
           </div>
         </div>
       </div>

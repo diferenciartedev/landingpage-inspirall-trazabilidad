@@ -137,6 +137,7 @@ function inspitz_schema() {
 			'lote_eyebrow' => array( 'type' => 'text',     'label' => 'Categoría', 'default' => 'Control y trazabilidad' ),
 			'lote_title'   => array( 'type' => 'text',     'label' => 'Título', 'default' => 'Información asociada a cada lote' ),
 			'lote_desc'    => array( 'type' => 'textarea', 'label' => 'Descripción', 'default' => 'La trazabilidad permite asociar al lote la información disponible sobre su procedencia, cultivo, cosecha, proceso tecnológico, producto y distribución.' ),
+			'lote_image'   => array( 'type' => 'image',    'label' => 'Foto (columna izquierda)' ),
 			'lote_quote'   => array( 'type' => 'text',     'label' => 'Frase destacada', 'default' => 'Cada envase conecta al consumidor con la historia registrada de su lote.' ),
 		) ),
 
@@ -152,6 +153,7 @@ function inspitz_schema() {
 			'dist_eyebrow' => array( 'type' => 'text',     'label' => 'Categoría', 'default' => 'Distribución' ),
 			'dist_title'   => array( 'type' => 'text',     'label' => 'Título', 'default' => 'Del producto hasta tu destino' ),
 			'dist_desc'    => array( 'type' => 'textarea', 'label' => 'Descripción', 'default' => 'Nuestro compromiso con la calidad se extiende a la entrega. Utilizamos métodos seguros y rastreables para procurar que Fico Crispy llegue en buenas condiciones a cada destino.' ),
+			'dist_image'   => array( 'type' => 'image',    'label' => 'Foto (columna derecha)' ),
 			'dist_cards'   => array( 'type' => 'repeater', 'label' => 'Métodos de entrega', 'sub' => array(
 				'titulo' => 'Destino', 'metodo' => 'Método', 'descripcion' => 'Descripción', 'eta' => 'Tiempo estimado' ),
 				'default' => array(

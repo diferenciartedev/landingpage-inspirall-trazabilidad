@@ -108,7 +108,7 @@ function inspitz_render() {
 	// Image sizing (from the "Imágenes" tab)
 	$hero_style  = '--shot-w:' . max( 120, intval( $o['img_hero_w'] ) ) . 'px';
 	$prod_style  = '--shot-w:' . max( 120, intval( $o['img_prod_w'] ) ) . 'px;--shot-ar:' . ( $o['img_prod_ar'] ? $o['img_prod_ar'] : '3 / 4' );
-	$stage_style = '--shot-ar:' . ( $o['img_stage_ar'] ? $o['img_stage_ar'] : '4 / 3' );
+	$stage_style = '--shot-ar:' . ( $o['img_stage_ar'] ? $o['img_stage_ar'] : '4 / 3' ) . ';flex:1 1 320px;min-width:0';
 	$env_style   = '--shot-w:' . max( 100, intval( $o['img_envase_w'] ) ) . 'px';
 
 	// Visible stages → sequential numbering + which one is last (for the rail cap)
@@ -279,7 +279,7 @@ function inspitz_render() {
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cultivo_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cultivo_title'); ?></h2><p class="lead"><?php echo iz('cultivo_desc'); ?></p></header>
 					<div class="stage__split" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
 						<?php echo iz_shot( izraw('cultivo_image'), 'shot--photo', 'Centro de cultivo de espirulina', '<div class="photo-panel" data-photo="Centro de cultivo · nave de espirulina"><span class="photo-panel__hint">Foto real: centro de cultivo / supervisión</span></div>', $stage_style ); ?>
-						<div class="datablock">
+						<div class="datablock" style="flex:1 1 320px;min-width:0">
 							<div class="datablock__row"><span class="datablock__key">Procedencia</span><span class="datablock__val"><span class="chips">
 								<?php foreach ( array_filter( array_map('trim', explode("\n", izraw('cultivo_procedencia') ) ) ) as $ch ) echo '<span class="chip">' . esc_html($ch) . '</span>'; ?>
 							</span></span></div>
@@ -302,7 +302,7 @@ function inspitz_render() {
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cosecha_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cosecha_title'); ?></h2><p class="lead"><?php echo iz('cosecha_desc'); ?></p></header>
 					<div class="stage__split stage__split--rev" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
 						<?php echo iz_shot( izraw('cosecha_image'), 'shot--photo', 'Cosecha del lote', '<div class="photo-panel" data-photo="Cosecha del lote · registro de fecha y hora"><span class="photo-panel__hint">Foto real: cosecha del lote</span></div>', $stage_style ); ?>
-						<div class="datablock">
+						<div class="datablock" style="flex:1 1 320px;min-width:0">
 							<div class="datablock__row"><span class="datablock__key">Horario</span><span class="datablock__val"><?php echo iz('cosecha_horario'); ?></span></div>
 							<div class="datablock__row"><span class="datablock__key">Frecuencia</span><span class="datablock__val"><?php echo iz('cosecha_frecuencia'); ?></span></div>
 							<div class="datablock__row"><span class="datablock__key">Procedencia</span><span class="datablock__val"><b data-sede>Según el lote consultado</b></span></div>
@@ -348,21 +348,23 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_lote'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_lote']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('lote_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('lote_title'); ?></h2><p class="lead"><?php echo iz('lote_desc'); ?></p></header>
-					<div class="lote-grid stagger" style="display:flex!important;flex-wrap:wrap!important;gap:1rem">
-						<?php /* flex cells auto-wrap 4→2→1; theme-proof */ ?>
-						<div class="lote-cell"><span>Código del lote</span><b class="mono" data-lote><?php echo iz('lote_default'); ?></b></div>
-						<div class="lote-cell"><span>Producto</span><b><?php echo iz('prod_title'); ?></b></div>
-						<div class="lote-cell"><span>Presentación</span><b><?php echo iz('prod_sub'); ?></b></div>
-						<div class="lote-cell"><span>Procedencia</span><b data-sede>Según el lote</b></div>
-						<div class="lote-cell"><span>Fecha y hora de inoculación</span><b data-fecha-inoculacion>Registrada en el lote</b></div>
-						<div class="lote-cell"><span>Fecha y hora de cosecha</span><b data-fecha-cosecha>Registrada en el lote</b></div>
-						<div class="lote-cell"><span>Responsable</span><b>Asociación / familiar agricultor</b></div>
-						<div class="lote-cell"><span>Tipo de cultivo</span><b>Agua tratada, 100% reciclada</b></div>
-						<div class="lote-cell"><span>Proceso</span><b>Phyco-Active Nano-Blend</b></div>
-						<div class="lote-cell"><span>Datos de distribución</span><b>Asociados al lote</b></div>
-						<div class="lote-cell lote-cell--wide"><span>Código de transacción blockchain</span><b class="mono" data-hash>Registro blockchain pendiente de integración</b></div>
-					</div>
-					<p class="quote"><?php echo iz('lote_quote'); ?></p>
+					<div class="stage__split" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
+							<?php echo iz_shot( izraw('lote_image'), 'shot--photo', 'Fico Crispy Blend · lote', '<div class="photo-panel" data-photo="Producto / lote"><span class="photo-panel__hint">Foto real (opcional)</span></div>', $stage_style ); ?>
+							<div class="datablock" style="flex:1 1 320px;min-width:0">
+								<div class="datablock__row"><span class="datablock__key">Código del lote</span><span class="datablock__val mono" data-lote><?php echo iz('lote_default'); ?></span></div>
+								<div class="datablock__row"><span class="datablock__key">Producto</span><span class="datablock__val"><?php echo iz('prod_title'); ?></span></div>
+								<div class="datablock__row"><span class="datablock__key">Presentación</span><span class="datablock__val"><?php echo iz('prod_sub'); ?></span></div>
+								<div class="datablock__row"><span class="datablock__key">Procedencia</span><span class="datablock__val"><b data-sede>Según el lote</b></span></div>
+								<div class="datablock__row"><span class="datablock__key">Inoculación</span><span class="datablock__val" data-fecha-inoculacion>Registrada en el lote</span></div>
+								<div class="datablock__row"><span class="datablock__key">Cosecha</span><span class="datablock__val" data-fecha-cosecha>Registrada en el lote</span></div>
+								<div class="datablock__row"><span class="datablock__key">Responsable</span><span class="datablock__val">Asociación / familiar agricultor</span></div>
+								<div class="datablock__row"><span class="datablock__key">Tipo de cultivo</span><span class="datablock__val">Agua tratada, 100% reciclada</span></div>
+								<div class="datablock__row"><span class="datablock__key">Proceso</span><span class="datablock__val">Phyco-Active Nano-Blend</span></div>
+								<div class="datablock__row"><span class="datablock__key">Distribución</span><span class="datablock__val">Asociados al lote</span></div>
+								<div class="datablock__row"><span class="datablock__key">Transacción blockchain</span><span class="datablock__val mono" data-hash>Registro blockchain pendiente de integración</span></div>
+							</div>
+						</div>
+						<p class="quote"><?php echo iz('lote_quote'); ?></p>
 				</div>
 			</div>
 		</section>
@@ -376,12 +378,12 @@ function inspitz_render() {
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('ident_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('ident_title'); ?></h2><p class="lead"><?php echo iz('ident_desc'); ?></p></header>
 					<div class="stage__split stage__split--rev" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
-						<div class="stage__media-col">
+						<div class="stage__media-col" style="flex:1 1 320px;min-width:0">
 							<?php echo iz_shot( izraw('ident_image'), 'shot--pack', 'Envase Fico Crispy Blend', iz_can('sm'), $env_style ); ?>
 							<div class="pack__qr"><div class="qr" data-qr-mini aria-label="Código QR del lote"></div><span class="mono pack__lote">LOTE <b data-lote><?php echo iz('lote_default'); ?></b></span></div>
 							<span class="badge-vegan" data-vegan-badge hidden><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14c6 1 10-3 16-10-1 9-6 15-13 15-2 0-3-1-3-3 0-1 0-1.5.5-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Vegano</span>
 						</div>
-						<div class="datablock">
+						<div class="datablock" style="flex:1 1 320px;min-width:0">
 							<div class="datablock__row"><span class="datablock__key">Producto</span><span class="datablock__val"><?php echo iz('prod_title'); ?></span></div>
 							<div class="datablock__row"><span class="datablock__key">Presentación</span><span class="datablock__val"><?php echo iz('prod_sub'); ?></span></div>
 							<div class="datablock__row"><span class="datablock__key">Marca</span><span class="datablock__val"><?php echo iz('brand_word'); ?></span></div>
@@ -403,14 +405,19 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_distribucion'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_distribucion']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('dist_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('dist_title'); ?></h2><p class="lead"><?php echo iz('dist_desc'); ?></p></header>
-					<div class="dist__grid stagger">
-						<?php foreach ( (array) izraw('dist_cards') as $i => $dc ) : ?>
-							<article class="dist-card">
-								<div class="dist-card__top"><?php echo $dist_icos[ $i % 2 ]; ?><div><h3><?php echo esc_html($dc['titulo']); ?></h3><span class="dist-card__method"><?php echo esc_html($dc['metodo']); ?></span></div></div>
-								<p><?php echo esc_html($dc['descripcion']); ?></p>
-								<div class="dist-card__eta"><span>Tiempo estimado</span><b><?php echo esc_html($dc['eta']); ?></b></div>
-							</article>
-						<?php endforeach; ?>
+					<div class="stage__split stage__split--rev" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
+						<div class="stage__media-col" style="flex:1 1 320px;min-width:0">
+							<?php echo iz_shot( izraw('dist_image'), 'shot--photo', 'Distribucion Fico Crispy Blend', '<div class="photo-panel" data-photo="Distribucion"><span class="photo-panel__hint">Foto real (opcional)</span></div>', $stage_style ); ?>
+						</div>
+						<div class="dist__col" style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:clamp(1rem,2vw,1.4rem)">
+							<?php foreach ( (array) izraw('dist_cards') as $i => $dc ) : ?>
+								<article class="dist-card">
+									<div class="dist-card__top"><?php echo $dist_icos[ $i % 2 ]; ?><div><h3><?php echo esc_html($dc['titulo']); ?></h3><span class="dist-card__method"><?php echo esc_html($dc['metodo']); ?></span></div></div>
+									<p><?php echo esc_html($dc['descripcion']); ?></p>
+									<div class="dist-card__eta"><span>Tiempo estimado</span><b><?php echo esc_html($dc['eta']); ?></b></div>
+								</article>
+							<?php endforeach; ?>
+						</div>
 					</div>
 				</div>
 			</div>
