@@ -64,6 +64,39 @@ function iz_brand( $light = false ) {
 		. $img . $svg . '<span class="brand__word">' . esc_html( $o['brand_word'] ) . '</span></a>';
 }
 
+/** Critical layout CSS printed inline in the page (immune to CSS caching). */
+function inspitz_critical_css() {
+	return '#inspitz-app *,#inspitz-app *::before,#inspitz-app *::after{box-sizing:border-box}'
+		. '#inspitz-app figure{margin:0!important}#inspitz-app img{max-width:100%;height:auto}'
+		. '#inspitz-app main{margin:0!important;padding:0!important}#inspitz-app>header{margin:0!important}'
+		. '#inspitz-app section{margin:0!important}'
+		. '#inspitz-app .hero__grid{display:grid!important;grid-template-columns:1.15fr .85fr!important}'
+		. '#inspitz-app .product__grid{display:grid!important;grid-template-columns:.85fr 1.15fr!important}'
+		. '#inspitz-app .nutrition__grid{display:grid!important;grid-template-columns:1fr 1fr!important}'
+		. '#inspitz-app .stage__grid{display:grid!important;grid-template-columns:58px minmax(0,1fr)!important}'
+		. '#inspitz-app .stage__split{display:grid!important;grid-template-columns:1fr 1fr!important}'
+		. '#inspitz-app .stage__split--rev>:first-child{order:2!important}'
+		. '#inspitz-app .origin__grid{display:grid!important;grid-template-columns:.9fr 1.1fr!important}'
+		. '#inspitz-app .blockchain__grid{display:grid!important;grid-template-columns:1.2fr .8fr!important}'
+		. '#inspitz-app .dist__grid{display:grid!important;grid-template-columns:1fr 1fr!important}'
+		. '#inspitz-app .certs__grid{display:grid!important;grid-template-columns:1fr 1fr!important}'
+		. '#inspitz-app .zones{display:grid!important;grid-template-columns:1fr 1fr!important}'
+		. '#inspitz-app .benefits{display:grid!important;grid-template-columns:repeat(4,1fr)!important}'
+		. '#inspitz-app .pillars{display:grid!important;grid-template-columns:repeat(3,1fr)!important}'
+		. '#inspitz-app .lote-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important}'
+		. '#inspitz-app .checks{display:grid!important;grid-template-columns:1fr 1fr!important}'
+		. '#inspitz-app .stage__media-col,#inspitz-app .hero__product{display:flex!important;flex-direction:column}'
+		. '@media(max-width:980px){#inspitz-app .origin__grid{grid-template-columns:1fr!important}}'
+		. '@media(max-width:900px){#inspitz-app .blockchain__grid,#inspitz-app .nutrition__grid{grid-template-columns:1fr!important}}'
+		. '@media(max-width:880px){#inspitz-app .hero__grid,#inspitz-app .product__grid{grid-template-columns:1fr!important}#inspitz-app .benefits,#inspitz-app .lote-grid{grid-template-columns:1fr 1fr!important}}'
+		. '@media(max-width:820px){#inspitz-app .stage__split{grid-template-columns:1fr!important}#inspitz-app .stage__split--rev>:first-child{order:0!important}#inspitz-app .stage__grid{grid-template-columns:44px minmax(0,1fr)!important}}'
+		. '@media(max-width:720px){#inspitz-app .pillars{grid-template-columns:1fr!important}}'
+		. '@media(max-width:700px){#inspitz-app .dist__grid{grid-template-columns:1fr!important}}'
+		. '@media(max-width:640px){#inspitz-app .certs__grid{grid-template-columns:1fr!important}}'
+		. '@media(max-width:560px){#inspitz-app .zones{grid-template-columns:1fr!important}}'
+		. '@media(max-width:460px){#inspitz-app .benefits,#inspitz-app .lote-grid,#inspitz-app .checks{grid-template-columns:1fr!important}}';
+}
+
 /** Main render — returns the full landing HTML. */
 function inspitz_render() {
 	$o = inspitz_get();
@@ -116,6 +149,7 @@ function inspitz_render() {
 
 	ob_start();
 	?>
+<style id="inspitz-critical"><?php echo inspitz_critical_css(); ?></style>
 <div class="inspitz-root" id="inspitz-app">
 <header class="topbar" id="topbar">
 	<div class="topbar__inner">

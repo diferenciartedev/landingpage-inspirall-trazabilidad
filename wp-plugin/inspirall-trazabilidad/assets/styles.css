@@ -31,8 +31,8 @@
   --mono:    "JetBrains Mono", ui-monospace, monospace;
 
   /* Layout */
-  --wrap: 1320px;
-  --gutter: clamp(0.9rem, 2.6vw, 2rem);
+  --wrap: 1360px;
+  --gutter: clamp(0.85rem, 1.8vw, 1.4rem);
   --radius: 20px;
   --radius-lg: 28px;
   --radius-sm: 14px;
@@ -224,15 +224,21 @@ p { margin: 0; }
 .topbar__lote-mini { display: none; }
 
 @media (max-width: 860px) {
+  .topbar__inner { padding-block: .5rem; gap: .6rem; }
   .topbar__tag, .topbar__lote { display: none; }
-  .topbar__lote-mini { display: inline-block; font-family: var(--mono); font-size: .72rem; letter-spacing: .05em; color: var(--deep); background: rgba(14,143,131,.1); border: 1px solid rgba(14,143,131,.2); padding: .3rem .6rem; border-radius: 8px; }
+  .topbar__lote-mini { display: inline-block; white-space: nowrap; font-family: var(--mono); font-size: .68rem; letter-spacing: .02em; color: var(--deep); background: rgba(14,143,131,.1); border: 1px solid rgba(14,143,131,.2); padding: .32rem .6rem; border-radius: 8px; }
+  .pill--live { white-space: nowrap; }
+  .brand__img { max-height: 26px; max-width: 140px; width: auto; }
+  .brand__word { font-size: 1.08rem; }
+  .brand__mark { width: 26px; height: 26px; }
 }
-@media (max-width: 520px) { .topbar__meta { gap: .5rem; } }
+/* small phones: keep only logo + lote chip for a clean header */
+@media (max-width: 620px) { .topbar__meta { display: none; } }
 
 /* ============================================================
    2. HERO
    ============================================================ */
-.hero { position: relative; color: var(--white); overflow: hidden; background: linear-gradient(165deg, #06182c 0%, var(--deep) 45%, #0a3350 100%); padding-block: clamp(3.5rem, 8vw, 6rem) clamp(4rem, 9vw, 7rem); }
+.hero { position: relative; color: var(--white); overflow: hidden; background: linear-gradient(165deg, #06182c 0%, var(--deep) 45%, #0a3350 100%); padding-block: clamp(2.4rem, 5vw, 4rem) clamp(3.5rem, 8vw, 6rem); }
 .hero__bg { position: absolute; inset: 0; z-index: 0; }
 .hero__sun { position: absolute; top: -18%; right: -8%; width: min(70vw, 720px); aspect-ratio: 1; background: radial-gradient(circle at 50% 50%, rgba(70,198,242,.55), rgba(34,199,184,.22) 38%, transparent 66%); filter: blur(8px); }
 .hero__grain { position: absolute; inset: 0; opacity: .5; background: radial-gradient(circle at 15% 82%, rgba(14,143,131,.28), transparent 42%), radial-gradient(circle at 88% 68%, rgba(24,154,211,.22), transparent 40%); }
