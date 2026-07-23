@@ -66,7 +66,7 @@ add_filter( 'template_include', function ( $template ) {
 		}
 	}
 	return $template;
-} );
+}, 99 ); // late priority so it wins over Elementor / theme template handlers
 
 /* -------- Crear página automáticamente al activar -------- */
 register_activation_hook( __FILE__, function () {

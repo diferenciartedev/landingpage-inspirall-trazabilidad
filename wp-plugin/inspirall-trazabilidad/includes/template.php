@@ -116,7 +116,7 @@ function inspitz_render() {
 
 	ob_start();
 	?>
-<div class="inspitz-root">
+<div class="inspitz-root" id="inspitz-app">
 <header class="topbar" id="topbar">
 	<div class="topbar__inner">
 		<?php echo iz_brand( false ); ?>
