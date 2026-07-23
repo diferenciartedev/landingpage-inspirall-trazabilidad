@@ -70,12 +70,13 @@ function inspitz_critical_css() {
 		. '#inspitz-app figure{margin:0!important}#inspitz-app img{max-width:100%;height:auto}'
 		. '#inspitz-app main{margin:0!important;padding:0!important}#inspitz-app>header{margin:0!important}'
 		. '#inspitz-app section{margin:0!important}'
+		. '#inspitz-app .hero{margin-top:0!important;padding-top:clamp(1rem,2.4vw,1.8rem)!important}'
 		. '#inspitz-app .hero__grid{display:grid!important;grid-template-columns:1.15fr .85fr!important}'
 		. '#inspitz-app .product__grid{display:grid!important;grid-template-columns:.85fr 1.15fr!important}'
 		. '#inspitz-app .nutrition__grid{display:grid!important;grid-template-columns:1fr 1fr!important}'
 		. '#inspitz-app .stage__grid{display:grid!important;grid-template-columns:58px minmax(0,1fr)!important}'
-		. '#inspitz-app .stage__split{display:flex!important;flex-wrap:wrap!important;align-items:flex-start!important;gap:clamp(1.5rem,3.5vw,2.6rem)}'
-		. '#inspitz-app .stage__split>*{flex:1 1 300px!important;min-width:0!important;max-width:100%!important}'
+		. '#inspitz-app .stage__split{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:start!important;gap:clamp(1.6rem,3.5vw,3rem)!important}'
+		. '#inspitz-app .stage__split>*{min-width:0!important;max-width:100%!important;width:auto!important}'
 		. '#inspitz-app .stage__split--rev>:first-child{order:2!important}'
 		. '#inspitz-app .origin__grid{display:grid!important;grid-template-columns:.9fr 1.1fr!important}'
 		. '#inspitz-app .blockchain__grid{display:grid!important;grid-template-columns:1.2fr .8fr!important}'
@@ -92,7 +93,7 @@ function inspitz_critical_css() {
 		. '@media (max-width:980px){#inspitz-app .origin__grid{grid-template-columns:1fr!important}}'
 		. '@media (max-width:900px){#inspitz-app .blockchain__grid,#inspitz-app .nutrition__grid{grid-template-columns:1fr!important}}'
 		. '@media (max-width:880px){#inspitz-app .hero__grid,#inspitz-app .product__grid{grid-template-columns:1fr!important}#inspitz-app .benefits{grid-template-columns:1fr 1fr!important}}'
-		. '@media (max-width:820px){#inspitz-app .stage__grid{grid-template-columns:44px minmax(0,1fr)!important}}'
+		. '@media (max-width:820px){#inspitz-app .stage__grid{grid-template-columns:44px minmax(0,1fr)!important}#inspitz-app .stage__split{grid-template-columns:1fr!important}#inspitz-app .stage__split--rev>:first-child{order:0!important}}'
 		. '@media (max-width:720px){#inspitz-app .pillars{grid-template-columns:1fr!important}}'
 		. '@media (max-width:700px){#inspitz-app .dist__grid{grid-template-columns:1fr!important}}'
 		. '@media (max-width:640px){#inspitz-app .certs__grid{grid-template-columns:1fr!important}}'
@@ -277,7 +278,7 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_cultivo'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_cultivo']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cultivo_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cultivo_title'); ?></h2><p class="lead"><?php echo iz('cultivo_desc'); ?></p></header>
-					<div class="stage__split" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
+					<div class="stage__split" style="display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.6rem,3.5vw,3rem);align-items:start">
 						<?php echo iz_shot( izraw('cultivo_image'), 'shot--photo', 'Centro de cultivo de espirulina', '<div class="photo-panel" data-photo="Centro de cultivo · nave de espirulina"><span class="photo-panel__hint">Foto real: centro de cultivo / supervisión</span></div>', $stage_style ); ?>
 						<div class="datablock" style="flex:1 1 320px;min-width:0">
 							<div class="datablock__row"><span class="datablock__key">Procedencia</span><span class="datablock__val"><span class="chips">
@@ -300,7 +301,7 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_cosecha'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_cosecha']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cosecha_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cosecha_title'); ?></h2><p class="lead"><?php echo iz('cosecha_desc'); ?></p></header>
-					<div class="stage__split stage__split--rev" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
+					<div class="stage__split stage__split--rev" style="display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.6rem,3.5vw,3rem);align-items:start">
 						<?php echo iz_shot( izraw('cosecha_image'), 'shot--photo', 'Cosecha del lote', '<div class="photo-panel" data-photo="Cosecha del lote · registro de fecha y hora"><span class="photo-panel__hint">Foto real: cosecha del lote</span></div>', $stage_style ); ?>
 						<div class="datablock" style="flex:1 1 320px;min-width:0">
 							<div class="datablock__row"><span class="datablock__key">Horario</span><span class="datablock__val"><?php echo iz('cosecha_horario'); ?></span></div>
@@ -348,7 +349,7 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_lote'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_lote']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('lote_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('lote_title'); ?></h2><p class="lead"><?php echo iz('lote_desc'); ?></p></header>
-					<div class="stage__split" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
+					<div class="stage__split" style="display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.6rem,3.5vw,3rem);align-items:start">
 							<?php echo iz_shot( izraw('lote_image'), 'shot--photo', 'Fico Crispy Blend · lote', '<div class="photo-panel" data-photo="Producto / lote"><span class="photo-panel__hint">Foto real (opcional)</span></div>', $stage_style ); ?>
 							<div class="datablock" style="flex:1 1 320px;min-width:0">
 								<div class="datablock__row"><span class="datablock__key">Código del lote</span><span class="datablock__val mono" data-lote><?php echo iz('lote_default'); ?></span></div>
@@ -377,7 +378,7 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_identificacion'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_identificacion']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('ident_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('ident_title'); ?></h2><p class="lead"><?php echo iz('ident_desc'); ?></p></header>
-					<div class="stage__split stage__split--rev" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
+					<div class="stage__split stage__split--rev" style="display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.6rem,3.5vw,3rem);align-items:start">
 						<div class="stage__media-col" style="flex:1 1 320px;min-width:0">
 							<?php echo iz_shot( izraw('ident_image'), 'shot--pack', 'Envase Fico Crispy Blend', iz_can('sm'), $env_style ); ?>
 							<div class="pack__qr"><div class="qr" data-qr-mini aria-label="Código QR del lote"></div><span class="mono pack__lote">LOTE <b data-lote><?php echo iz('lote_default'); ?></b></span></div>
@@ -405,7 +406,7 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_distribucion'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_distribucion']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('dist_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('dist_title'); ?></h2><p class="lead"><?php echo iz('dist_desc'); ?></p></header>
-					<div class="stage__split stage__split--rev" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
+					<div class="stage__split stage__split--rev" style="display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.6rem,3.5vw,3rem);align-items:start">
 						<div class="stage__media-col" style="flex:1 1 320px;min-width:0">
 							<?php echo iz_shot( izraw('dist_image'), 'shot--photo', 'Distribucion Fico Crispy Blend', '<div class="photo-panel" data-photo="Distribucion"><span class="photo-panel__hint">Foto real (opcional)</span></div>', $stage_style ); ?>
 						</div>
