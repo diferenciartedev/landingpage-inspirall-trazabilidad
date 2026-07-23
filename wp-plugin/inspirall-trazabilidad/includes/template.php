@@ -74,7 +74,8 @@ function inspitz_critical_css() {
 		. '#inspitz-app .product__grid{display:grid!important;grid-template-columns:.85fr 1.15fr!important}'
 		. '#inspitz-app .nutrition__grid{display:grid!important;grid-template-columns:1fr 1fr!important}'
 		. '#inspitz-app .stage__grid{display:grid!important;grid-template-columns:58px minmax(0,1fr)!important}'
-		. '#inspitz-app .stage__split{display:grid!important;grid-template-columns:1fr 1fr!important}'
+		. '#inspitz-app .stage__split{display:flex!important;flex-wrap:wrap!important;align-items:flex-start!important;gap:clamp(1.5rem,3.5vw,2.6rem)}'
+		. '#inspitz-app .stage__split>*{flex:1 1 300px!important;min-width:0!important;max-width:100%!important}'
 		. '#inspitz-app .stage__split--rev>:first-child{order:2!important}'
 		. '#inspitz-app .origin__grid{display:grid!important;grid-template-columns:.9fr 1.1fr!important}'
 		. '#inspitz-app .blockchain__grid{display:grid!important;grid-template-columns:1.2fr .8fr!important}'
@@ -83,18 +84,20 @@ function inspitz_critical_css() {
 		. '#inspitz-app .zones{display:grid!important;grid-template-columns:1fr 1fr!important}'
 		. '#inspitz-app .benefits{display:grid!important;grid-template-columns:repeat(4,1fr)!important}'
 		. '#inspitz-app .pillars{display:grid!important;grid-template-columns:repeat(3,1fr)!important}'
-		. '#inspitz-app .lote-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important}'
+		. '#inspitz-app .lote-grid{display:flex!important;flex-wrap:wrap!important;gap:1rem}'
+		. '#inspitz-app .lote-grid>*{flex:1 1 200px!important;min-width:0!important}'
+		. '#inspitz-app .lote-cell--wide{flex-basis:100%!important}'
 		. '#inspitz-app .checks{display:grid!important;grid-template-columns:1fr 1fr!important}'
 		. '#inspitz-app .stage__media-col,#inspitz-app .hero__product{display:flex!important;flex-direction:column}'
-		. '@media(max-width:980px){#inspitz-app .origin__grid{grid-template-columns:1fr!important}}'
-		. '@media(max-width:900px){#inspitz-app .blockchain__grid,#inspitz-app .nutrition__grid{grid-template-columns:1fr!important}}'
-		. '@media(max-width:880px){#inspitz-app .hero__grid,#inspitz-app .product__grid{grid-template-columns:1fr!important}#inspitz-app .benefits,#inspitz-app .lote-grid{grid-template-columns:1fr 1fr!important}}'
-		. '@media(max-width:820px){#inspitz-app .stage__split{grid-template-columns:1fr!important}#inspitz-app .stage__split--rev>:first-child{order:0!important}#inspitz-app .stage__grid{grid-template-columns:44px minmax(0,1fr)!important}}'
-		. '@media(max-width:720px){#inspitz-app .pillars{grid-template-columns:1fr!important}}'
-		. '@media(max-width:700px){#inspitz-app .dist__grid{grid-template-columns:1fr!important}}'
-		. '@media(max-width:640px){#inspitz-app .certs__grid{grid-template-columns:1fr!important}}'
-		. '@media(max-width:560px){#inspitz-app .zones{grid-template-columns:1fr!important}}'
-		. '@media(max-width:460px){#inspitz-app .benefits,#inspitz-app .lote-grid,#inspitz-app .checks{grid-template-columns:1fr!important}}';
+		. '@media (max-width:980px){#inspitz-app .origin__grid{grid-template-columns:1fr!important}}'
+		. '@media (max-width:900px){#inspitz-app .blockchain__grid,#inspitz-app .nutrition__grid{grid-template-columns:1fr!important}}'
+		. '@media (max-width:880px){#inspitz-app .hero__grid,#inspitz-app .product__grid{grid-template-columns:1fr!important}#inspitz-app .benefits{grid-template-columns:1fr 1fr!important}}'
+		. '@media (max-width:820px){#inspitz-app .stage__grid{grid-template-columns:44px minmax(0,1fr)!important}}'
+		. '@media (max-width:720px){#inspitz-app .pillars{grid-template-columns:1fr!important}}'
+		. '@media (max-width:700px){#inspitz-app .dist__grid{grid-template-columns:1fr!important}}'
+		. '@media (max-width:640px){#inspitz-app .certs__grid{grid-template-columns:1fr!important}}'
+		. '@media (max-width:560px){#inspitz-app .zones{grid-template-columns:1fr!important}}'
+		. '@media (max-width:460px){#inspitz-app .benefits,#inspitz-app .checks{grid-template-columns:1fr!important}}';
 }
 
 /** Main render — returns the full landing HTML. */
@@ -274,7 +277,7 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_cultivo'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_cultivo']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cultivo_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cultivo_title'); ?></h2><p class="lead"><?php echo iz('cultivo_desc'); ?></p></header>
-					<div class="stage__split">
+					<div class="stage__split" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
 						<?php echo iz_shot( izraw('cultivo_image'), 'shot--photo', 'Centro de cultivo de espirulina', '<div class="photo-panel" data-photo="Centro de cultivo · nave de espirulina"><span class="photo-panel__hint">Foto real: centro de cultivo / supervisión</span></div>', $stage_style ); ?>
 						<div class="datablock">
 							<div class="datablock__row"><span class="datablock__key">Procedencia</span><span class="datablock__val"><span class="chips">
@@ -297,7 +300,7 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_cosecha'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_cosecha']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('cosecha_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('cosecha_title'); ?></h2><p class="lead"><?php echo iz('cosecha_desc'); ?></p></header>
-					<div class="stage__split stage__split--rev">
+					<div class="stage__split stage__split--rev" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
 						<?php echo iz_shot( izraw('cosecha_image'), 'shot--photo', 'Cosecha del lote', '<div class="photo-panel" data-photo="Cosecha del lote · registro de fecha y hora"><span class="photo-panel__hint">Foto real: cosecha del lote</span></div>', $stage_style ); ?>
 						<div class="datablock">
 							<div class="datablock__row"><span class="datablock__key">Horario</span><span class="datablock__val"><?php echo iz('cosecha_horario'); ?></span></div>
@@ -345,7 +348,8 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_lote'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_lote']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('lote_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('lote_title'); ?></h2><p class="lead"><?php echo iz('lote_desc'); ?></p></header>
-					<div class="lote-grid stagger">
+					<div class="lote-grid stagger" style="display:flex!important;flex-wrap:wrap!important;gap:1rem">
+						<?php /* flex cells auto-wrap 4→2→1; theme-proof */ ?>
 						<div class="lote-cell"><span>Código del lote</span><b class="mono" data-lote><?php echo iz('lote_default'); ?></b></div>
 						<div class="lote-cell"><span>Producto</span><b><?php echo iz('prod_title'); ?></b></div>
 						<div class="lote-cell"><span>Presentación</span><b><?php echo iz('prod_sub'); ?></b></div>
@@ -371,7 +375,7 @@ function inspitz_render() {
 				<div class="stage__rail<?php echo $rail_last('sec_identificacion'); ?>"><span class="stage__node" aria-hidden="true"><?php echo $snum['sec_identificacion']; ?></span></div>
 				<div class="stage__content">
 					<header class="stage__intro"><p class="eyebrow"><?php echo iz('ident_eyebrow'); ?></p><h2 class="section__title"><?php echo iz('ident_title'); ?></h2><p class="lead"><?php echo iz('ident_desc'); ?></p></header>
-					<div class="stage__split stage__split--rev">
+					<div class="stage__split stage__split--rev" style="display:flex!important;flex-wrap:wrap!important;gap:clamp(1.5rem,3.5vw,2.6rem);align-items:flex-start">
 						<div class="stage__media-col">
 							<?php echo iz_shot( izraw('ident_image'), 'shot--pack', 'Envase Fico Crispy Blend', iz_can('sm'), $env_style ); ?>
 							<div class="pack__qr"><div class="qr" data-qr-mini aria-label="Código QR del lote"></div><span class="mono pack__lote">LOTE <b data-lote><?php echo iz('lote_default'); ?></b></span></div>
