@@ -627,15 +627,36 @@ p { margin: 0; }
 }
 
 /* ============================================================
-   REVEAL ANIMATION
+   REVEAL & MOTION — dynamic scroll flow (reduced-motion safe)
    ============================================================ */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }
 
-/* Staggered cascade for card groups */
-.stagger > * { opacity: 0; transform: translateY(22px); transition: opacity .55s var(--ease), transform .55s var(--ease); }
+/* Staggered cascade for card groups (subtle scale-in reads more alive) */
+.stagger > * { opacity: 0; transform: translateY(22px) scale(.985); transition: opacity .55s var(--ease), transform .55s var(--ease); }
 .stagger.is-in > * { opacity: 1; transform: none; }
 
+/* Timeline rail draws itself in as each stage enters view */
+.stage__grid.reveal .stage__rail::before { transform: scaleY(0); transform-origin: top center; transition: transform .9s var(--ease) .05s; }
+.stage__grid.reveal.is-in .stage__rail::before { transform: scaleY(1); }
+/* Node fades/settles in with its stage */
+.stage__grid.reveal .stage__node { opacity: 0; transform: scale(.72); transition: opacity .5s var(--ease) .22s, box-shadow .35s var(--ease); }
+.stage__grid.reveal.is-in .stage__node { opacity: 1; transform: scale(1); }
+.stage__grid.reveal.is-in .stage__node.is-current { transform: scale(1.08); }
+
+/* Hover micro-interactions — make the UI feel responsive */
+.datablock__row { transition: background .25s var(--ease); }
+.datablock__row:hover { background: rgba(14,143,131,.045); }
+.chip { transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease); }
+.chip:hover { transform: translateY(-2px); background: rgba(34,199,184,.16); border-color: rgba(34,199,184,.45); }
+.spec-card__row { transition: background .2s var(--ease); border-radius: 8px; }
+.spec-card__row:hover { background: rgba(14,143,131,.04); }
+.stepper__item a .stepper__label { transition: color .25s var(--ease); }
+.stepper__item a:hover .stepper__label { color: var(--teal); }
+.nmin li, .nfacts__list li, .chain-card__row, .cert__data div { transition: background .2s var(--ease); }
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+  .reveal, .stagger > *,
+  .stage__grid.reveal .stage__rail::before,
+  .stage__grid.reveal .stage__node { opacity: 1 !important; transform: none !important; transition: none !important; }
 }

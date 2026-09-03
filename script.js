@@ -217,4 +217,19 @@
 
   /* ---- 13. Year (footer, if a [data-year] node exists) ---- */
   setAll("data-year", String(new Date().getFullYear()));
+
+  /* ---- 14. Subtle hero parallax on the decorative glow (reduced-motion safe) ---- */
+  if (!reduce) {
+    var heroSun = document.querySelector(".hero__sun");
+    if (heroSun) {
+      var tickingP = false;
+      var parallax = function () {
+        tickingP = false;
+        heroSun.style.transform = "translateY(" + (window.scrollY * 0.16) + "px)";
+      };
+      window.addEventListener("scroll", function () {
+        if (!tickingP) { tickingP = true; requestAnimationFrame(parallax); }
+      }, { passive: true });
+    }
+  }
 })();
